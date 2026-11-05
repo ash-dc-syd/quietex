@@ -1,6 +1,6 @@
 # Project progress
 
-## Job 1 — foundation published, storefront staging verified
+## Job 1 — foundation and Railway services deployed
 
 Date: 5 November 2026.
 
@@ -21,18 +21,18 @@ Date: 5 November 2026.
 - Medusa backend and Admin production build passed with `HMR_PORT=5173`. Automatic HMR port discovery failed because this environment restricts network-interface enumeration; the supported explicit port setting resolved it.
 - Redis module import paths resolved against the installed Medusa version.
 - Standalone storefront HTTP smoke check passed: homepage, CSS asset delivery, noindex metadata, email quote action and health endpoint. `/cart` and `/checkout` correctly returned 404.
-- No live database or Redis server was available, so migrations, admin login, events and real catalogue API requests have not been tested.
+- At initial local validation no database or Redis service was available. Railway migrations and Redis connectivity have since been verified (see backend deployment below). Authenticated admin access and catalogue integration still need setup.
 - Storefront deployed successfully to Railway using its Dockerfile (reported by Ash). Public HTTP verification passed at https://quietex-production.up.railway.app/: homepage 200, CSS asset 200, noindex/nofollow metadata present, expected email quote action present, and `/api/health` 200 with `{"status":"ok","service":"quietex-storefront"}`. Railway's environment label is production, but this project is being used for staging; the live Quietex domain remains unchanged.
-- Backend/worker Docker deployment, database migrations, admin sign-in and Redis connectivity remain unverified.
-- Browser visual/responsive QA has not been performed. This landing page is foundation scaffolding, not the first full design milestone.
+- Backend/worker Docker deployment, database migrations and Redis connectivity are now verified. The admin sign-in page loads; no admin invitation has been created yet.
+- The complete homepage and first Stella page are deployed and browser-tested as described in Job 2 below.
 
 ### Repository access
 The foundation was uploaded manually to `main` in commit `c8516df`. The upload matched the validated source except that six dotfiles were omitted and the history bundle was included. GitHub connector write access subsequently became available. The follow-up upload correction restores the dotfiles and removes the handoff bundle from the working tree; the source handoff preserves the original commits separately.
 
 ### Next work
 1. Continue from `main`; upload correction `6094cfd` is verified. Storefront preview: https://quietex-production.up.railway.app/.
-2. Build the homepage and one real product page with approved Quietex imagery and content; review the visual direction.
-3. Add Medusa server/worker, PostgreSQL and Redis to Railway staging; run migrations, create admin, configure durable product media and verify service connections.
+2. Review the deployed homepage and Stella page; confirm the visual direction.
+3. Confirm the email for the first Medusa administrator and create an invitation so Ash sets the password. Configure durable product media.
 4. Import verified catalogue data and connect product pages.
 5. Implement persisted quote enquiries with validation, spam protection, email notifications and admin visibility.
 
@@ -43,3 +43,43 @@ The foundation was uploaded manually to `main` in commit `c8516df`. The upload m
 - Privacy wording, enquiry retention and launch redirects.
 
 Future cart/checkout is optional and remains outside launch scope. The live Quietex site and DNS have not been modified.
+
+## Job 2 — homepage and Stella design deployed
+
+Completed in separate commits:
+- `8be5b33`: architectural homepage using existing Quietex photography/logo, collection, applications, FAQs, retailer links and enquiry callout.
+- `12ebccd`: Stella page at https://quietex-production.up.railway.app/product/stella with product details, finish/image selection and a finish-aware email enquiry.
+
+Checks passed: TypeScript, production build, standalone HTTP checks for both pages, local links, CSS delivery, noindex, health endpoint and absence of cart/checkout. Browser QA verified the desktop homepage at 1440 px, loaded hero/collection imagery, product navigation, changing to Sky Grey / Blackwood updates both image and email context, and the mobile navigation at 390 px opens/closes without horizontal overflow.
+
+See docs/content-sources.md for content provenance and scope. Images currently load from the old Quietex website. Other product cards still link to the original product pages. These assets must be migrated before changing the live domain. Enquiries still open email drafts; they are not saved in Medusa yet.
+
+## Medusa backend deployment — verified 6 November 2026
+
+Admin: https://medusa-server-production-456b.up.railway.app/app
+Health: https://medusa-server-production-456b.up.railway.app/health
+
+Railway project: `b1ed9bb2-de53-471d-b50e-992713842698`
+Environment: `c6f23b9c-1164-444d-babc-9658cb5087f8` (labelled production; this project is staging).
+
+| Service | Railway service ID | Verified state |
+| --- | --- | --- |
+| Storefront | `1e2aae87-a1df-45ba-b893-5ce7f71056f0` | Online |
+| Postgres | `573e012d-7418-4d24-95c9-47bbd2dd949f` | Online, persistent volume |
+| Redis | `228285c3-5ba3-4661-a5a1-02194659fb6b` | Online, persistent volume |
+| Medusa server | `f5d73efb-e206-48bf-8d24-548cc97f1ed6` | Online, health 200 OK, admin page rendered |
+| Medusa worker | `02564548-5dfe-4e74-bb47-3d6b6d36be6f` | Online, Redis connections and ready log verified |
+
+Both Medusa services use repository main, root /apps/backend and the supplied Dockerfile. Settings are configured directly in Railway's UI; no new legacy Config-as-Code path was enabled. Server pre-deploy command is `npm run db:migrate`, health path /health, timeout 300 seconds. Worker has no migration pre-deploy step, public domain or HTTP health check.
+
+Server mode is `server`; worker mode is `worker`. Both reference the same Postgres and Redis private connection variables. Secrets were generated using Railway's secret template and the worker references the server values. Secret values are not stored in the repository. CORS is configured for the staging storefront and server origins. Server public URL is supplied at build time for Admin.
+
+Verification:
+- Server deployment `3e37f9d8-84d2-4d35-95df-92f74f3760f9` built its Admin bundle, ran database migrations, synchronized links and completed migration scripts.
+- Server log: ready on port 9000.
+- Worker initially started before link migrations completed and automatically restarted; subsequent logs confirm Redis cache, event bus, locking and workflow connections, followed by ready on port 9000. On future first-time environments, wait for server migrations before starting the worker.
+- Public /health returns 200 OK; /app returns 200 and renders the Medusa sign-in form in the browser.
+- Unauthenticated /admin/products returns 401.
+- Railway server console is connected and available.
+
+Remaining: first admin invitation (email needs confirmation), admin sign-in, durable media storage, catalogue import and publishable key/sales-channel connection to the storefront. The frontend still uses editorial product data and is not yet driven by the new Medusa catalogue. No live Quietex domain or DNS changes were made.

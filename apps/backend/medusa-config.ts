@@ -1,0 +1,63 @@
+import { defineConfig, loadEnv } from "@medusajs/framework/utils"
+
+loadEnv(process.env.NODE_ENV || "development", process.cwd())
+
+const workerMode = process.env.MEDUSA_WORKER_MODE || "shared"
+if (!["shared", "server", "worker"].includes(workerMode)) {
+  throw new Error("MEDUSA_WORKER_MODE must be shared, server or worker")
+}
+if (process.env.NODE_ENV === "production") {
+  for (const name of ["DATABASE_URL", "REDIS_URL", "JWT_SECRET", "COOKIE_SECRET"]) {
+    if (!process.env[name]) throw new Error(`Missing required environment variable: ${name}`)
+  }
+}
+
+const redisUrl = process.env.REDIS_URL
+
+module.exports = defineConfig({
+  projectConfig: {
+    databaseUrl: process.env.DATABASE_URL,
+    redisUrl,
+    workerMode: workerMode as "shared" | "server" | "worker",
+    http: {
+      storeCors: process.env.STORE_CORS || "http://localhost:3000",
+      adminCors: process.env.ADMIN_CORS || "http://localhost:9000",
+      authCors: process.env.AUTH_CORS || "http://localhost:3000,http://localhost:9000",
+      jwtSecret: process.env.JWT_SECRET,
+      cookieSecret: process.env.COOKIE_SECRET,
+    },
+  },
+  admin: {
+    disable: workerMode === "worker",
+    backendUrl: process.env.MEDUSA_BACKEND_URL || "http://localhost:9000",
+  },
+  modules: redisUrl ? [
+    {
+      resolve: "@medusajs/medusa/caching",
+      options: {
+        providers: [{
+          resolve: "@medusajs/caching-redis",
+          id: "caching-redis",
+          is_default: true,
+          options: { redisUrl },
+        }],
+      },
+    },
+    { resolve: "@medusajs/medusa/event-bus-redis", options: { redisUrl } },
+    {
+      resolve: "@medusajs/medusa/workflow-engine-redis",
+      options: { redis: { redisUrl } },
+    },
+    {
+      resolve: "@medusajs/medusa/locking",
+      options: {
+        providers: [{
+          resolve: "@medusajs/medusa/locking-redis",
+          id: "locking-redis",
+          is_default: true,
+          options: { redisUrl },
+        }],
+      },
+    },
+  ] : [],
+})

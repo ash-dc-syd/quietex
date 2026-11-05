@@ -1,0 +1,12 @@
+{
+  "name": "quietex",
+  "private": true,
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "storefront:dev": "npm --prefix apps/storefront run dev",
+    "storefront:build": "npm --prefix apps/storefront run build",
+    "backend:dev": "npm --prefix apps/backend run dev",
+    "backend:build": "npm --prefix apps/backend run build",
+    "check": "npm --prefix apps/storefront run typecheck && npm --prefix apps/backend run typecheck"
+  }
+}

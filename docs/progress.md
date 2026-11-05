@@ -26,10 +26,10 @@ Date: 5 November 2026.
 - Browser visual/responsive QA has not been performed. This landing page is foundation scaffolding, not the first full design milestone.
 
 ### Repository access
-The original repository was cloned successfully. GitHub installation was confirmed, but authenticated Git push was unavailable in this session. Local commits and a source handoff must not be described as pushed until remote verification succeeds.
+The foundation was uploaded manually to `main` in commit `c8516df`. The upload matched the validated source except that six dotfiles were omitted and the history bundle was included. GitHub connector write access subsequently became available. The follow-up upload correction restores the dotfiles and removes the handoff bundle from the working tree; the source handoff preserves the original commits separately.
 
 ### Next work
-1. Publish the foundation commits to `ash-dc-syd/quietex` once authenticated repository write access is available.
+1. Verify the upload correction on `ash-dc-syd/quietex` and continue from the current `main` branch.
 2. Build the homepage and one real product page with approved Quietex imagery and content; review the visual direction.
 3. Deploy Railway staging, run migrations, create admin, configure durable product media and verify service connections.
 4. Import verified catalogue data and connect product pages.

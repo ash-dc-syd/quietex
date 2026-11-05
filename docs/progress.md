@@ -1,6 +1,6 @@
 # Project progress
 
-## Job 1 — foundation prepared, deployment pending
+## Job 1 — foundation published, storefront staging verified
 
 Date: 5 November 2026.
 
@@ -22,16 +22,17 @@ Date: 5 November 2026.
 - Redis module import paths resolved against the installed Medusa version.
 - Standalone storefront HTTP smoke check passed: homepage, CSS asset delivery, noindex metadata, email quote action and health endpoint. `/cart` and `/checkout` correctly returned 404.
 - No live database or Redis server was available, so migrations, admin login, events and real catalogue API requests have not been tested.
-- Docker is not available in this environment; container builds and Railway deployment remain unverified.
+- Storefront deployed successfully to Railway using its Dockerfile (reported by Ash). Public HTTP verification passed at https://quietex-production.up.railway.app/: homepage 200, CSS asset 200, noindex/nofollow metadata present, expected email quote action present, and `/api/health` 200 with `{"status":"ok","service":"quietex-storefront"}`. Railway's environment label is production, but this project is being used for staging; the live Quietex domain remains unchanged.
+- Backend/worker Docker deployment, database migrations, admin sign-in and Redis connectivity remain unverified.
 - Browser visual/responsive QA has not been performed. This landing page is foundation scaffolding, not the first full design milestone.
 
 ### Repository access
 The foundation was uploaded manually to `main` in commit `c8516df`. The upload matched the validated source except that six dotfiles were omitted and the history bundle was included. GitHub connector write access subsequently became available. The follow-up upload correction restores the dotfiles and removes the handoff bundle from the working tree; the source handoff preserves the original commits separately.
 
 ### Next work
-1. Verify the upload correction on `ash-dc-syd/quietex` and continue from the current `main` branch.
+1. Continue from `main`; upload correction `6094cfd` is verified. Storefront preview: https://quietex-production.up.railway.app/.
 2. Build the homepage and one real product page with approved Quietex imagery and content; review the visual direction.
-3. Deploy Railway staging, run migrations, create admin, configure durable product media and verify service connections.
+3. Add Medusa server/worker, PostgreSQL and Redis to Railway staging; run migrations, create admin, configure durable product media and verify service connections.
 4. Import verified catalogue data and connect product pages.
 5. Implement persisted quote enquiries with validation, spam protection, email notifications and admin visibility.
 

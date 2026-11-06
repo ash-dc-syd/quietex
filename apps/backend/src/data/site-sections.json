@@ -1,0 +1,458 @@
+[
+  {
+    "type": "hero",
+    "label": "Hero banner",
+    "fields": [
+      {
+        "key": "eyebrow",
+        "label": "Eyebrow",
+        "kind": "text",
+        "default": "Quietex acoustic panels"
+      },
+      {
+        "key": "heading",
+        "label": "Heading",
+        "kind": "text",
+        "default": "Beautiful spaces."
+      },
+      {
+        "key": "accent",
+        "label": "Second heading line",
+        "kind": "text",
+        "default": "Better sound."
+      },
+      {
+        "key": "body",
+        "label": "Description",
+        "kind": "textarea",
+        "default": "Less echo. More of what you want to hear.\nAcoustic panels that belong in your space."
+      },
+      {
+        "key": "image",
+        "label": "Image",
+        "kind": "image",
+        "default": "https://quietex.com.au/wp-content/uploads/2025/10/home-theatre-hero.webp"
+      },
+      {
+        "key": "alt",
+        "label": "Image description",
+        "kind": "text",
+        "default": "A home theatre interior with dark acoustic wall panels and upholstered cinema seating"
+      },
+      {
+        "key": "primaryLabel",
+        "label": "Primary button",
+        "kind": "text",
+        "default": "Explore Panels"
+      },
+      {
+        "key": "primaryUrl",
+        "label": "Primary link",
+        "kind": "link",
+        "default": "#panels"
+      },
+      {
+        "key": "secondaryLabel",
+        "label": "Secondary button",
+        "kind": "text",
+        "default": "Request a Quote"
+      },
+      {
+        "key": "secondaryUrl",
+        "label": "Secondary link",
+        "kind": "link",
+        "default": "#enquire"
+      },
+      {
+        "key": "caption",
+        "label": "Image caption",
+        "kind": "text",
+        "default": "01 — The home theatre"
+      }
+    ]
+  },
+  {
+    "type": "benefits",
+    "label": "Benefits",
+    "fields": [
+      {
+        "key": "one",
+        "label": "First benefit",
+        "kind": "text",
+        "default": "Less echo, more clarity"
+      },
+      {
+        "key": "two",
+        "label": "Second benefit",
+        "kind": "text",
+        "default": "Texture you can see and feel"
+      },
+      {
+        "key": "three",
+        "label": "Third benefit",
+        "kind": "text",
+        "default": "For homes and workspaces"
+      }
+    ]
+  },
+  {
+    "type": "collection",
+    "label": "Featured panels",
+    "fields": [
+      {
+        "key": "eyebrow",
+        "label": "Eyebrow",
+        "kind": "text",
+        "default": "01 / Explore the collection"
+      },
+      {
+        "key": "heading",
+        "label": "Heading",
+        "kind": "text",
+        "default": "A quieter room."
+      },
+      {
+        "key": "accent",
+        "label": "Second heading line",
+        "kind": "text",
+        "default": "Your kind of finish."
+      },
+      {
+        "key": "body",
+        "label": "Description",
+        "kind": "textarea",
+        "default": "From understated textures to sculpted patterns, find a panel that feels at home in your interior."
+      },
+      {
+        "key": "handles",
+        "label": "Product handles (comma separated)",
+        "kind": "text",
+        "default": "stella,margot,normandy,adele"
+      },
+      {
+        "key": "linkLabel",
+        "label": "Link label",
+        "kind": "text",
+        "default": "View the full range"
+      }
+    ]
+  },
+  {
+    "type": "about",
+    "label": "About Quietex",
+    "fields": [
+      {
+        "key": "eyebrow",
+        "label": "Eyebrow",
+        "kind": "text",
+        "default": "02 / Sound meets design"
+      },
+      {
+        "key": "heading",
+        "label": "Heading",
+        "kind": "textarea",
+        "default": "A room should feel\nas good as it looks."
+      },
+      {
+        "key": "body",
+        "label": "First paragraph",
+        "kind": "textarea",
+        "default": "Bare walls and hard surfaces can leave a room sounding busy. Acoustic panels help soften reflected sound, making space for clearer conversations, music and movie nights."
+      },
+      {
+        "key": "bodyTwo",
+        "label": "Second paragraph",
+        "kind": "textarea",
+        "default": "Quietex brings acoustic treatment into the design of your room, with finishes you’ll want to make a feature of."
+      },
+      {
+        "key": "image",
+        "label": "Image",
+        "kind": "image",
+        "default": "https://quietex.com.au/wp-content/uploads/2026/02/charlotte-home-cinema-image-1-scaled.webp"
+      },
+      {
+        "key": "alt",
+        "label": "Image description",
+        "kind": "text",
+        "default": "Home cinema interior with textured acoustic panels"
+      },
+      {
+        "key": "pointOneTitle",
+        "label": "First point title",
+        "kind": "text",
+        "default": "Consider the sound."
+      },
+      {
+        "key": "pointOne",
+        "label": "First point",
+        "kind": "text",
+        "default": "Reduce unwanted reflections within your room."
+      },
+      {
+        "key": "pointTwoTitle",
+        "label": "Second point title",
+        "kind": "text",
+        "default": "Make it your own."
+      },
+      {
+        "key": "pointTwo",
+        "label": "Second point",
+        "kind": "text",
+        "default": "Explore colour, material and pattern."
+      },
+      {
+        "key": "linkLabel",
+        "label": "Link label",
+        "kind": "text",
+        "default": "Let’s talk about your space"
+      }
+    ]
+  },
+  {
+    "type": "spaces",
+    "label": "Spaces",
+    "fields": [
+      {
+        "key": "eyebrow",
+        "label": "Eyebrow",
+        "kind": "text",
+        "default": "03 / A place for better sound"
+      },
+      {
+        "key": "heading",
+        "label": "Heading",
+        "kind": "text",
+        "default": "Different spaces."
+      },
+      {
+        "key": "accent",
+        "label": "Second heading line",
+        "kind": "text",
+        "default": "The same consideration."
+      },
+      {
+        "key": "body",
+        "label": "Description",
+        "kind": "textarea",
+        "default": "For the films you love, the work you do and the moments in between."
+      },
+      {
+        "key": "oneTitle",
+        "label": "First space title",
+        "kind": "text",
+        "default": "At home"
+      },
+      {
+        "key": "oneCaption",
+        "label": "First space description",
+        "kind": "text",
+        "default": "Home theatres, listening rooms & living spaces"
+      },
+      {
+        "key": "oneImage",
+        "label": "First space image",
+        "kind": "image",
+        "default": "https://quietex.com.au/wp-content/uploads/2025/10/home-theatre-hero.webp"
+      },
+      {
+        "key": "twoTitle",
+        "label": "Second space title",
+        "kind": "text",
+        "default": "At work"
+      },
+      {
+        "key": "twoCaption",
+        "label": "Second space description",
+        "kind": "text",
+        "default": "Offices, studios & commercial interiors"
+      },
+      {
+        "key": "twoImage",
+        "label": "Second space image",
+        "kind": "image",
+        "default": "https://quietex.com.au/wp-content/uploads/2025/10/office-hero.webp"
+      }
+    ]
+  },
+  {
+    "type": "faq",
+    "label": "Questions and answers",
+    "fields": [
+      {
+        "key": "eyebrow",
+        "label": "Eyebrow",
+        "kind": "text",
+        "default": "A few useful answers"
+      },
+      {
+        "key": "heading",
+        "label": "Heading",
+        "kind": "text",
+        "default": "Good questions."
+      },
+      {
+        "key": "accent",
+        "label": "Second heading line",
+        "kind": "text",
+        "default": "Clear answers."
+      },
+      {
+        "key": "body",
+        "label": "Description",
+        "kind": "textarea",
+        "default": "Not sure where to start?\nWe’re happy to help."
+      },
+      {
+        "key": "question1",
+        "label": "Question 1",
+        "kind": "text",
+        "default": "Will acoustic panels soundproof my room?"
+      },
+      {
+        "key": "answer1",
+        "label": "Answer 1",
+        "kind": "textarea",
+        "default": "Acoustic panels help reduce echo and reflected sound inside a room. Soundproofing between rooms usually needs additional building treatments. Tell us what you’re trying to achieve and we can help you explore the options."
+      },
+      {
+        "key": "question2",
+        "label": "Question 2",
+        "kind": "text",
+        "default": "How do I choose the right panel?"
+      },
+      {
+        "key": "answer2",
+        "label": "Answer 2",
+        "kind": "textarea",
+        "default": "Start with the room, the surfaces you want to treat and the look you prefer. Send us your room dimensions and a few details about how you use the space, and we can discuss suitable panels."
+      },
+      {
+        "key": "question3",
+        "label": "Question 3",
+        "kind": "text",
+        "default": "Can I buy Quietex panels online?"
+      },
+      {
+        "key": "answer3",
+        "label": "Answer 3",
+        "kind": "textarea",
+        "default": "Quietex panels are currently sold through our retail partners, including Digital Cinema, Audio Junction and Instyle HiFi. Contact a retailer for pricing and availability, or send us a project enquiry."
+      },
+      {
+        "key": "question4",
+        "label": "Question 4",
+        "kind": "text",
+        "default": "Can panels be cut to fit?"
+      },
+      {
+        "key": "answer4",
+        "label": "Answer 4",
+        "kind": "textarea",
+        "default": "Panels can be cut to suit your layout. Check the product material, dimensions and installation requirements with us before cutting or fitting around corners, switches and power points."
+      }
+    ]
+  },
+  {
+    "type": "retailers",
+    "label": "Retail partners",
+    "fields": [
+      {
+        "key": "eyebrow",
+        "label": "Eyebrow",
+        "kind": "text",
+        "default": "Find your Quietex"
+      },
+      {
+        "key": "heading",
+        "label": "Heading",
+        "kind": "textarea",
+        "default": "Available through\nour retail partners."
+      },
+      {
+        "key": "body",
+        "label": "Description",
+        "kind": "textarea",
+        "default": "Speak with a retailer about pricing, availability and purchasing."
+      }
+    ]
+  },
+  {
+    "type": "enquiry",
+    "label": "Quote callout",
+    "fields": [
+      {
+        "key": "eyebrow",
+        "label": "Eyebrow",
+        "kind": "text",
+        "default": "A little guidance goes a long way"
+      },
+      {
+        "key": "heading",
+        "label": "Heading",
+        "kind": "textarea",
+        "default": "Let’s find the right\npanel for your space."
+      },
+      {
+        "key": "body",
+        "label": "Description",
+        "kind": "textarea",
+        "default": "Tell us what you have in mind. Share your room dimensions, preferred finish or a question about the range."
+      },
+      {
+        "key": "buttonLabel",
+        "label": "Button label",
+        "kind": "text",
+        "default": "Request a Quote"
+      }
+    ]
+  },
+  {
+    "type": "banner",
+    "label": "Image and text banner",
+    "fields": [
+      {
+        "key": "eyebrow",
+        "label": "Eyebrow",
+        "kind": "text",
+        "default": "Quietex"
+      },
+      {
+        "key": "heading",
+        "label": "Heading",
+        "kind": "text",
+        "default": "Your next project"
+      },
+      {
+        "key": "body",
+        "label": "Description",
+        "kind": "textarea",
+        "default": "Tell us about your space."
+      },
+      {
+        "key": "image",
+        "label": "Image",
+        "kind": "image",
+        "default": "https://quietex.com.au/wp-content/uploads/2026/02/charlotte-home-cinema-image-1-scaled.webp"
+      },
+      {
+        "key": "alt",
+        "label": "Image description",
+        "kind": "text",
+        "default": "Quietex acoustic panel interior"
+      },
+      {
+        "key": "buttonLabel",
+        "label": "Button label",
+        "kind": "text",
+        "default": "Request a Quote"
+      },
+      {
+        "key": "buttonUrl",
+        "label": "Button link",
+        "kind": "link",
+        "default": "#enquire"
+      }
+    ]
+  }
+]

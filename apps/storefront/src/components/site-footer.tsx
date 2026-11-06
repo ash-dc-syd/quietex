@@ -3,17 +3,17 @@ import Link from "next/link"
 import { enquiryHref, media, retailers } from "@/lib/catalogue"
 import { Arrow } from "./icons"
 
-export function Retailers() {
-  return <section className="retailer-section section-wrap" id="retailers" aria-labelledby="retailers-heading">
-    <div className="retailer-intro"><p className="eyebrow">Find your Quietex</p><h2 id="retailers-heading">Available through<br />our retail partners.</h2><p>Speak with a retailer about pricing, availability and purchasing.</p></div>
+export function Retailers({ settings = {}, id = "retailers" }: { settings?: Record<string,string>; id?: string }) {
+  return <section className="retailer-section section-wrap" id={id} aria-labelledby="retailers-heading">
+    <div className="retailer-intro"><p className="eyebrow">{settings.eyebrow ?? "Find your Quietex"}</p><h2 id="retailers-heading">{settings.heading ?? "Available through our retail partners."}</h2><p>{settings.body ?? "Speak with a retailer about pricing, availability and purchasing."}</p></div>
     <div className="retailer-list">{retailers.map(retailer => <a href={retailer.url} key={retailer.name}><span>{retailer.name}</span><Arrow diagonal /></a>)}</div>
   </section>
 }
 
-export function EnquirySection() {
-  return <section className="enquiry-section" id="enquire" aria-labelledby="enquiry-heading">
-    <div className="enquiry-top"><p className="eyebrow">A little guidance goes a long way</p><span className="small-circle"><Arrow diagonal /></span></div>
-    <div className="enquiry-content"><h2 id="enquiry-heading">Let’s find the right<br />panel for your space.</h2><div><p>Tell us what you have in mind. Share your room dimensions, preferred finish or a question about the range.</p><a className="button button-light" href={enquiryHref("Quietex project enquiry", "Hi Quietex,\n\nI'd like some help with my project.\n\nSpace / room type:\nRoom dimensions:\nPreferred panels or finishes:\nPostcode:\n\nThank you.")}>Request a Quote<Arrow diagonal /></a><span className="email-note">Opens your email app · enquiries@quietex.com.au</span></div></div>
+export function EnquirySection({ settings = {}, id = "enquire" }: { settings?: Record<string,string>; id?: string }) {
+  return <section className="enquiry-section" id={id} aria-labelledby="enquiry-heading">
+    <div className="enquiry-top"><p className="eyebrow">{settings.eyebrow ?? "A little guidance goes a long way"}</p><span className="small-circle"><Arrow diagonal /></span></div>
+    <div className="enquiry-content"><h2 id="enquiry-heading">{settings.heading ?? "Let’s find the right panel for your space."}</h2><div><p>{settings.body ?? "Tell us what you have in mind. Share your room dimensions, preferred finish or a question about the range."}</p><a className="button button-light" href={enquiryHref("Quietex project enquiry", "Hi Quietex,\n\nI'd like some help with my project.\n\nSpace / room type:\nRoom dimensions:\nPreferred panels or finishes:\nPostcode:\n\nThank you.")}>{settings.buttonLabel ?? "Request a Quote"}<Arrow diagonal /></a><span className="email-note">Opens your email app · enquiries@quietex.com.au</span></div></div>
   </section>
 }
 

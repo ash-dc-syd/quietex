@@ -335,3 +335,9 @@ details[open] > summary .plus::after { display: none; }
   .faq-list summary { font-size: 13px; }
   .product-description, .about-copy > p:not(.eyebrow) { font-size: 14px; }
 }
+
+.homepage { background:var(--paper);color:var(--ink); }
+.homepage .retailer-intro h2,.homepage .enquiry-content h2 { white-space:pre-line; }
+.editor-banner { display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center; }
+.editor-banner img { width:100%;height:auto;display:block; }
+@media(max-width:700px) { .editor-banner { grid-template-columns:1fr;gap:28px; } }

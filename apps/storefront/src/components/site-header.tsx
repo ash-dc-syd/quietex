@@ -6,11 +6,11 @@ import { useState } from "react"
 import { media } from "@/lib/catalogue"
 import { Arrow } from "./icons"
 
-export function SiteHeader() {
+export function SiteHeader({ announcement = "Considered design. Better acoustics." }: { announcement?: string }) {
   const [open, setOpen] = useState(false)
   const links = [{ label: "Our panels", href: "/#panels" }, { label: "Spaces", href: "/#spaces" }, { label: "About Quietex", href: "/#about" }]
   return <>
-    <div className="announcement">Considered design. Better acoustics.</div>
+    <div className="announcement">{announcement}</div>
     <header className="site-header">
       <Link href="/" className="brand" aria-label="Quietex home" onClick={() => setOpen(false)}><Image unoptimized src={media.logo} width={170} height={30} alt="Quietex" priority /></Link>
       <nav className="desktop-nav" aria-label="Main navigation">{links.map(link => <Link href={link.href} key={link.href}>{link.label}</Link>)}</nav>

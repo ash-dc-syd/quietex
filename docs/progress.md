@@ -106,3 +106,13 @@ Remaining before launch: durable product media (images currently reference the o
 - TypeScript and full Medusa/Admin production build passed. Mocked provider checks passed for template rendering, URL validation, HTML escaping, retry idempotency and sanitized delivery failures.
 - Resend domain verified with sending enabled. Medusa server and worker deployed successfully. Existing graphics invitation resent through Medusa; Resend confirmed Delivered. Admin password reset requested through the public auth endpoint (201); Resend confirmed Delivered to Ash. No password was changed. Website catalogue and backend health endpoints remain 200.
 - Additional mocked subscriber checks verified correct admin paths and URL encoding for tokens and email addresses, and exclusion of customer reset events.
+
+## Job 4 — homepage visual editor
+
+- Added Website editor inside Medusa Admin using the existing administrator login. Content is persisted in PostgreSQL through Store metadata, separately as draft/published/previous published version. No new CMS account is required.
+- Supports announcement text, homepage text and image URLs, existing image choices, featured-product picker, section visibility, reorder/add/remove, and reusable image/text banners. Footer navigation and product-detail layouts remain code-managed.
+- Desktop/mobile iframe preview uses the real homepage components; click a preview section to edit it. Preview messages check both origin and window identity, and draft data is never returned by the public endpoint.
+- Save draft does not publish. Publishing is explicit, previous published content can be restored, Redis locking and revision checks prevent concurrent edits from silently overwriting each other.
+- Authenticated /admin/site-content API and public published-only /store/site-content API. Server validates section types, IDs, lengths and safe image/link URLs. All text is rendered as text, not arbitrary HTML.
+- Images can be selected from existing catalogue/homepage images or supplied as hosted HTTPS URLs. Direct file uploads and durable media migration remain separate work.
+- Both app type checks passed. Backend/Admin and storefront production builds passed. Automated content tests passed for draft isolation, publication/restore, concurrency, unsafe values and schema parity. Deployment/browser QA pending.

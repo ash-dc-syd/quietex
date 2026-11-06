@@ -83,3 +83,16 @@ Verification:
 - Railway server console is connected and available.
 
 Remaining: first admin invitation (email needs confirmation), admin sign-in, durable media storage, catalogue import and publishable key/sales-channel connection to the storefront. The frontend still uses editorial product data and is not yet driven by the new Medusa catalogue. No live Quietex domain or DNS changes were made.
+
+## Job 3 — Medusa catalogue connected (6 November 2026)
+
+- First administrator signed in successfully.
+- Imported 11 panels and 24 finish variants from the existing Quietex product pages. Preserved product handles, dimensions and material specifications. Corrected Adele's source variant image, which incorrectly referenced Marcel.
+- Imported no prices or stock quantities. Published products use a dedicated Quietex Catalogue sales channel and storefront publishable key configured in Railway variables.
+- Added an idempotent import script that skips existing handles to preserve later admin edits.
+- Homepage featured products, /our-products and all /product/[handle] pages now read the Medusa Store API without caching. The earlier static Stella page and editorial product-card data are superseded.
+- Finish selection updates the image and email enquiry context. Quote requests still open email drafts and are not persisted.
+- Backend and storefront TypeScript checks and production builds passed. Store API verification returned 11 products and 24 variants. Public catalogue returned 200 with all 11 local product links; browser verification confirmed Stella finish selection updates both image and email context.
+- Server and storefront Railway watch paths now scope builds to their respective app directories.
+
+Remaining before launch: durable product media (images currently reference the original WordPress site), persisted quote enquiries and notifications, content approval, privacy and redirects. The live Quietex domain and DNS remain unchanged.

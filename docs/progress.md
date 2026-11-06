@@ -104,4 +104,5 @@ Remaining before launch: durable product media (images currently reference the o
 - Configured notify.quietex.com.au in Resend and added its DKIM TXT and two sending CNAME records in SiteGround. Existing website and mailbox DNS records were preserved.
 - RESEND_API_KEY and RESEND_FROM_EMAIL are Railway variables; worker references server values. Provider is enabled when its key is present.
 - TypeScript and full Medusa/Admin production build passed. Mocked provider checks passed for template rendering, URL validation, HTML escaping, retry idempotency and sanitized delivery failures.
-- Live deployment, DNS verification and end-to-end delivery checks are pending.
+- Resend domain verified with sending enabled. Medusa server and worker deployed successfully. Existing graphics invitation resent through Medusa; Resend confirmed Delivered. Admin password reset requested through the public auth endpoint (201); Resend confirmed Delivered to Ash. No password was changed. Website catalogue and backend health endpoints remain 200.
+- Additional mocked subscriber checks verified correct admin paths and URL encoding for tokens and email addresses, and exclusion of customer reset events.

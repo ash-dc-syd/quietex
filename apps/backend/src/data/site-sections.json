@@ -125,7 +125,7 @@
       },
       {
         "key": "handles",
-        "label": "Product handles (comma separated)",
+        "label": "Panels to feature",
         "kind": "text",
         "default": "stella,margot,normandy,adele"
       },

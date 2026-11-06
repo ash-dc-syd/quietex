@@ -4,7 +4,7 @@ import { Arrow, SoundLines } from "./icons"
 import { SiteHeader } from "./site-header"
 import { EnquirySection, Retailers, SiteFooter } from "./site-footer"
 import { PanelCard } from "./panel-card"
-import { enquiryHref, featuredPanels, media } from "@/lib/catalogue"
+import { enquiryHref, media } from "@/lib/catalogue"
 
 const faqs = [
   ["Will acoustic panels soundproof my room?", "Acoustic panels help reduce echo and reflected sound inside a room. Soundproofing between rooms usually needs additional building treatments. Tell us what you’re trying to achieve and we can help you explore the options."],
@@ -13,7 +13,7 @@ const faqs = [
   ["Can panels be cut to fit?", "Panels can be cut to suit your layout. Check the product material, dimensions and installation requirements with us before cutting or fitting around corners, switches and power points."],
 ]
 
-export default function HomeView() {
+export default function HomeView({ panels }: { panels: import("@/lib/products").Panel[] }) {
   return <>
     <SiteHeader />
     <main id="main">
@@ -25,8 +25,8 @@ export default function HomeView() {
       </section>
       <section className="benefit-strip" aria-label="Acoustic panel benefits"><div><SoundLines /><span>Less echo, more clarity</span></div><div><span className="material-icon" aria-hidden="true" /><span>Texture you can see and feel</span></div><div><span className="square-icon" aria-hidden="true" /><span>For homes and workspaces</span></div></section>
       <section className="collection section-wrap" id="panels" aria-labelledby="collection-heading">
-        <div className="section-heading"><div><p className="eyebrow">01 / Explore the collection</p><h2 id="collection-heading">A quieter room.<br /><em>Your kind of finish.</em></h2></div><div className="section-description"><p>From understated textures to sculpted patterns, find a panel that feels at home in your interior.</p><a className="text-link" href="https://quietex.com.au/our-products/">View the full range<Arrow diagonal /></a></div></div>
-        <div className="panel-grid">{featuredPanels.map(panel => <PanelCard panel={panel} key={panel.name} />)}</div>
+        <div className="section-heading"><div><p className="eyebrow">01 / Explore the collection</p><h2 id="collection-heading">A quieter room.<br /><em>Your kind of finish.</em></h2></div><div className="section-description"><p>From understated textures to sculpted patterns, find a panel that feels at home in your interior.</p><a className="text-link" href="/our-products">View the full range<Arrow diagonal /></a></div></div>
+        <div className="panel-grid">{panels.map(panel => <PanelCard panel={panel} key={panel.id} />)}</div>
       </section>
       <section className="about-section" id="about" aria-labelledby="about-heading">
         <div className="about-image"><Image unoptimized src={media.interior} alt="Home cinema interior with textured acoustic panels" fill sizes="(max-width: 850px) 100vw, 50vw" /><span className="image-caption">Quietex room visualisation</span></div>

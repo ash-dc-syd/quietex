@@ -14,6 +14,6 @@ export const retailers = [
   { name: "Instyle HiFi", url: "https://www.instylehifi.com.au/" },
 ]
 
-export function enquiryHref(subject: string, body = "") {
-  return `mailto:enquiries@quietex.com.au?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+export function enquiryHref(subject: string) {
+  return `/contact?${new URLSearchParams({subject}).toString()}`
 }

@@ -32,6 +32,7 @@ module.exports = defineConfig({
     backendUrl: process.env.MEDUSA_BACKEND_URL || "http://localhost:9000",
   },
   modules: [
+    { resolve: "./src/modules/enquiry" },
     ...(process.env.RESEND_API_KEY ? [{
       resolve: "@medusajs/medusa/notification",
       options: {

@@ -11,6 +11,12 @@ function escapeHtml(value: string) {
 }
 
 export function renderEmail(template: string, data: Record<string, unknown>) {
+  if (template === "enquiry-received") {
+    const fields = [["Name",data.name],["Email",data.email],["Phone",data.phone],["Postcode",data.postcode],["Panel",data.product],["Finish",data.finish],["Quantity",data.quantity],["Subject",data.subject],["Message",data.message],["Reference",data.id]]
+    const text = fields.map(([label,value])=>`${label}: ${value ?? ""}`).join("\n\n")
+    return {subject:"New Quietex website enquiry",text,
+      html:`<html><body style="font-family:Arial,sans-serif;line-height:1.6;max-width:640px;margin:24px auto"><h1 style="font-size:24px">New Quietex enquiry</h1>${fields.map(([label,value])=>`<p><strong>${label}</strong><br><span style="white-space:pre-wrap">${escapeHtml(String(value ?? ""))}</span></p>`).join("")}<p>Manage this enquiry in Medusa → Enquiries.</p></body></html>`}
+  }
   const invite = template === "user-invited"
   if (!invite && template !== "password-reset") throw new Error("Unsupported Quietex email template")
   const url = data[invite ? "invite_url" : "reset_url"]
@@ -45,7 +51,10 @@ export default class ResendNotificationProvider extends AbstractNotificationProv
 
   async send(notification: ProviderSendNotificationDTO): Promise<ProviderSendNotificationResultsDTO> {
     const content = renderEmail(notification.template, notification.data || {})
-    const body = { from: this.options.from, to: [notification.to], ...content }
+    const replyTo = notification.template === "enquiry-received" ? notification.data?.email : null
+    const body = { from: this.options.from, to: [notification.to], ...content,
+      ...(typeof replyTo === "string" && /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(replyTo) ? {reply_to:replyTo} : {}) }
+
     // Retries of the same token/email must not send duplicate messages.
     const key = createHash("sha256").update(JSON.stringify(body)).digest("hex")
     let response: Response

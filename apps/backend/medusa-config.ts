@@ -31,7 +31,22 @@ module.exports = defineConfig({
     disable: workerMode === "worker",
     backendUrl: process.env.MEDUSA_BACKEND_URL || "http://localhost:9000",
   },
-  modules: redisUrl ? [
+  modules: [
+    ...(process.env.RESEND_API_KEY ? [{
+      resolve: "@medusajs/medusa/notification",
+      options: {
+        providers: [{
+          resolve: "./src/modules/resend",
+          id: "resend",
+          options: {
+            channels: ["email"],
+            api_key: process.env.RESEND_API_KEY,
+            from: process.env.RESEND_FROM_EMAIL,
+          },
+        }],
+      },
+    }] : []),
+    ...(redisUrl ? [
     {
       resolve: "@medusajs/medusa/caching",
       options: {
@@ -59,5 +74,6 @@ module.exports = defineConfig({
         }],
       },
     },
-  ] : [],
+    ] : []),
+  ],
 })

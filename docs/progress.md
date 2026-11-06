@@ -96,3 +96,12 @@ Remaining: first admin invitation (email needs confirmation), admin sign-in, dur
 - Server and storefront Railway watch paths now scope builds to their respective app directories.
 
 Remaining before launch: durable product media (images currently reference the original WordPress site), persisted quote enquiries and notifications, content approval, privacy and redirects. The live Quietex domain and DNS remain unchanged.
+
+## Admin email integration — 6 November 2026
+
+- Added Resend Notification Module Provider using the HTTPS sending API, with plain-text and HTML invitation/password-reset templates. No API key is stored in source.
+- Subscribers handle invite.created, invite.resent and admin auth.password_reset. URLs use the configured public backend URL and safely encoded tokens/email values. Customer reset emails are excluded because the quote-only storefront has no customer accounts.
+- Configured notify.quietex.com.au in Resend and added its DKIM TXT and two sending CNAME records in SiteGround. Existing website and mailbox DNS records were preserved.
+- RESEND_API_KEY and RESEND_FROM_EMAIL are Railway variables; worker references server values. Provider is enabled when its key is present.
+- TypeScript and full Medusa/Admin production build passed. Mocked provider checks passed for template rendering, URL validation, HTML escaping, retry idempotency and sanitized delivery failures.
+- Live deployment, DNS verification and end-to-end delivery checks are pending.

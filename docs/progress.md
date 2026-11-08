@@ -125,3 +125,10 @@ Remaining before launch: durable product media (images currently reference the o
 - Records are saved before returning success. Worker event handling sends an escaped HTML/plain-text notification through Resend to ENQUIRY_TO_EMAIL, with customer email as Reply-To. Failed notifications remain visible and retry up to five times, with a scheduled sweep recovering pending events and a manual retry option.
 - ENQUIRY_API_SECRET is private in Railway and shared only between storefront/server. ENQUIRY_TO_EMAIL is configured on server and referenced by worker. No keys or private notification recipients are committed.
 - Type checks, production builds and automated checks cover validation, throttling, retry safety, HTML escaping, duplicate suppression and durable save on queue failure. Railway migration Migration20261106050000 completed successfully. End-to-end browser submission saved a marked Stella enquiry with Navy Blue/Walnut finish and quantity; the customer received a saved reference, the admin inbox showed the record and notification status sent, and Resend confirmed Delivered to the configured recipient. Status changes to contacted and closed persisted after reload; the marked test record remains closed. Direct backend submission without the proxy secret returns 403, admin inbox without login returns 401, and the frontend rejects foreign/malformed origins and honeypot submissions. Both final builds and all nine automated checks passed.
+
+
+## Original Quietex favicon — 9 November 2026
+
+- Reused the exact 300px favicon artwork from the existing WordPress website: https://quietex.com.au/wp-content/uploads/2025/10/Asset-5@500x-300x300.png. Stored it locally in the storefront, with ICO and Apple touch icon sizes derived from that source. Removed the temporary Q SVG.
+- Next.js production build and TypeScript checks passed. Railway reports the original-favicon deployment active and successful. The deployed /icon.png returns image/png and matches the original file byte for byte.
+- Durable media storage, direct image uploads in the visual editor and migration of existing WordPress image URLs remain pending.

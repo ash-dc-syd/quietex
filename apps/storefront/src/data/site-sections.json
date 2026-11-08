@@ -67,7 +67,7 @@
         "key": "caption",
         "label": "Image caption",
         "kind": "text",
-        "default": "01 — The home theatre"
+        "default": ""
       }
     ]
   },
@@ -103,7 +103,7 @@
         "key": "eyebrow",
         "label": "Eyebrow",
         "kind": "text",
-        "default": "01 / Explore the collection"
+        "default": "Explore the collection"
       },
       {
         "key": "heading",
@@ -145,7 +145,7 @@
         "key": "eyebrow",
         "label": "Eyebrow",
         "kind": "text",
-        "default": "02 / Sound meets design"
+        "default": "Sound meets design"
       },
       {
         "key": "heading",
@@ -217,7 +217,7 @@
         "key": "eyebrow",
         "label": "Eyebrow",
         "kind": "text",
-        "default": "03 / A place for better sound"
+        "default": "A place for better sound"
       },
       {
         "key": "heading",

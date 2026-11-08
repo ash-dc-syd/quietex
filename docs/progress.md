@@ -132,3 +132,10 @@ Remaining before launch: durable product media (images currently reference the o
 - Reused the exact 300px favicon artwork from the existing WordPress website: https://quietex.com.au/wp-content/uploads/2025/10/Asset-5@500x-300x300.png. Stored it locally in the storefront, with ICO and Apple touch icon sizes derived from that source. Removed the temporary Q SVG.
 - Next.js production build and TypeScript checks passed. Railway reports the original-favicon deployment active and successful. The deployed /icon.png returns image/png and matches the original file byte for byte.
 - Durable media storage, direct image uploads in the visual editor and migration of existing WordPress image URLs remain pending.
+
+
+## Homepage label cleanup — 9 November 2026
+
+- Removed the hero image caption, all Room visualisation / Quietex room visualisation overlays and decorative numbering from section labels, benefit points and FAQs. Kept section titles and aligned FAQ answer text after removing the number column.
+- Removed numbers from editor defaults in both matching schemas. Rendering also strips existing saved section-label number prefixes, so already-published content updates immediately without overwriting editor drafts.
+- Storefront production build and TypeScript passed; backend TypeScript and source compilation passed. Local Admin bundling was blocked by the environment networkInterfaces syscall. Railway storefront deployment succeeded; public-page verification confirmed captions and decorative numbers absent with the collection heading retained.

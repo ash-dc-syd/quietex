@@ -139,3 +139,13 @@ Remaining before launch: durable product media (images currently reference the o
 - Removed the hero image caption, all Room visualisation / Quietex room visualisation overlays and decorative numbering from section labels, benefit points and FAQs. Kept section titles and aligned FAQ answer text after removing the number column.
 - Removed numbers from editor defaults in both matching schemas. Rendering also strips existing saved section-label number prefixes, so already-published content updates immediately without overwriting editor drafts.
 - Storefront production build and TypeScript passed; backend TypeScript and source compilation passed. Local Admin bundling was blocked by the environment networkInterfaces syscall. Railway storefront deployment succeeded; public-page verification confirmed captions and decorative numbers absent with the collection heading retained.
+
+
+## Durable image uploads and publishing clarity - 10 November 2026
+
+- Confirmed no durable File Module provider was configured. Connected Medusa's built-in S3 provider to the existing private Railway bucket, using bucket-variable references on both server and worker. ACL headers are disabled for compatibility; secrets stay in Railway.
+- Added public raster-only /media/:filename streaming with immutable caching, nosniff and CSP. Exports and non-image files remain private. Existing WordPress URLs remain unchanged; newly uploaded images use the backend media URL.
+- Added Upload image controls to homepage image fields with type/10 MB checks, progress and errors, alongside the existing URL/picker. Uploaded files become draft content until publication. Removed the obsolete hero caption editor field.
+- Clarified unsaved, saved-unpublished and published status. Live QA confirmed saving a temporary announcement kept the public site unchanged, publication appeared in the public storefront, and restoring the original announcement through publication removed the marker.
+- Backend/Admin build and TypeScript passed; all six media/content tests passed. Railway server and worker deployed online. A Medusa exec check used the configured File Module to upload a marked PNG, read back identical bucket bytes and fetch identical bytes from its public media URL (200 image/png). No catalogue or homepage image was replaced by the check. The tiny marked test object remains as a diagnostic asset.
+- Automated browser file selection was blocked by the Brave extension's Allow access to file URLs permission; actual browser chooser submission remains a manual check. The deployed storage upload/read/public-serving path passed on the server.

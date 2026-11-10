@@ -32,6 +32,21 @@ module.exports = defineConfig({
     backendUrl: process.env.MEDUSA_BACKEND_URL || "http://localhost:9000",
   },
   modules: [
+    ...(process.env.S3_BUCKET ? [{
+      resolve: "@medusajs/medusa/file",
+      options: { providers: [{
+        resolve: "@medusajs/medusa/file-s3", id: "s3",
+        options: {
+          file_url: `${(process.env.MEDUSA_BACKEND_URL || "http://localhost:9000").replace(/\/$/, "")}/media`,
+          access_key_id: process.env.S3_ACCESS_KEY_ID,
+          secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+          bucket: process.env.S3_BUCKET,
+          region: process.env.S3_REGION || "auto",
+          endpoint: process.env.S3_ENDPOINT,
+          acl: false,
+        },
+      }] },
+    }] : []),
     { resolve: "./src/modules/enquiry" },
     ...(process.env.RESEND_API_KEY ? [{
       resolve: "@medusajs/medusa/notification",

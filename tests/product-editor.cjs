@@ -7,3 +7,7 @@ test('invalid URLs and foreign or missing variant IDs cannot update a product',a
  for(const change of [b=>b.variants[0].image='javascript:bad',b=>b.variants[0].id='foreign_variant',b=>b.variants=[],b=>b.specifications[0].name='']){const b=structuredClone(body);change(b);await assert.rejects(POST({body:b,params:{id:current.id},scope},{}),/valid specification/)}
 })
 test('stale product edits are rejected before a workflow runs',async()=>{await assert.rejects(POST({body:{...body,updatedAt:'version-1'},params:{id:current.id},scope},{}),/product changed/)})
+
+test('invalid, duplicate and unassociated image roles cannot be saved',async()=>{
+ for(const imageRoles of [[{url:'https://example.com/x.png',role:'wrong'}],[{url:'javascript:bad',role:'product'}],[{url:'https://example.com/x.png',role:'product'},{url:'https://example.com/x.png',role:'detail'}],[{url:'https://foreign.example/x.png',role:'lifestyle'}]])await assert.rejects(POST({body:{...body,imageRoles},params:{id:current.id},scope},{}),/valid specification/)
+})

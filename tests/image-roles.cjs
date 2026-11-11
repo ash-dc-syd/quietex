@@ -12,3 +12,9 @@ test('only-lifestyle products still have an image and frontend ordering matches 
  const r=resolveImageRoles({images:[{url:'life'}],metadata:{image_roles:[{url:'life',role:'lifestyle'}]}});assert.equal(r.productImage,'life');assert.equal(r.lifestyleImage,'life')
  assert.equal(fs.readFileSync('apps/backend/src/lib/image-roles.ts','utf8'),fs.readFileSync('apps/storefront/src/lib/image-roles.ts','utf8'))
 })
+
+test('reviewed existing room photos default to lifestyle, but explicit assignments win',()=>{
+ const room='https://quietex.com.au/wp-content/uploads/2025/10/home-theatre-hero.webp'
+ assert.equal(resolveImageRoles({images:[{url:room}]}).hasLifestyle,true)
+ assert.equal(resolveImageRoles({images:[{url:room}],metadata:{image_roles:[{url:room,role:'product'}]}}).hasLifestyle,false)
+})

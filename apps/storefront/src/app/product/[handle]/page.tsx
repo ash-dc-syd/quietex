@@ -8,7 +8,9 @@ export const dynamic = "force-dynamic"
 type Props = { params: Promise<{ handle: string }> }
 export async function generateMetadata({ params }: Props) {
   const [panel] = await getPanels((await params).handle)
-  return { title: panel ? `${panel.title} Acoustic Panel` : "Panel not found" }
+  if (!panel) return { title: "Panel not found", robots: { index: false, follow: false } }
+  const description = panel.description.slice(0, 200)
+  return { title: `${panel.title} Acoustic Panel`, description, alternates: { canonical: `/product/${panel.handle}/` }, openGraph: { title: `${panel.title} Acoustic Panel | Quietex`, description, images: panel.productImage ? [panel.productImage] : [] } }
 }
 export default async function ProductPage({ params }: Props) {
   const [panel] = await getPanels((await params).handle)

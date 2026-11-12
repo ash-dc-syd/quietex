@@ -5,7 +5,7 @@ import { panelSize } from "@/lib/panel-calculator"
 import Calculator from "./calculator"
 
 export const dynamic = "force-dynamic"
-export const metadata = { title: "Panel Calculator", description: "Estimate how many Quietex panels you need for your wall and include the result in a quote request." }
+export const metadata = { title: "Panel Calculator", alternates: { canonical: "/panel-calculator/" }, description: "Estimate how many Quietex panels you need for your wall and include the result in a quote request." }
 
 export default async function PanelCalculator() {
   const panels = await getPanels().catch(() => [])

@@ -3,7 +3,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { getPanels } from "@/lib/products"
 import EnquiryForm from "./form"
 export const dynamic="force-dynamic"
-export const metadata={title:"Contact Quietex · Request a Quote",description:"Tell us about your space or request a quote for Quietex acoustic panels."}
+export const metadata={title:"Contact Quietex · Request a Quote",alternates:{canonical:"/contact-us/"},description:"Tell us about your space or request a quote for Quietex acoustic panels."}
 export default async function Contact({searchParams}:{searchParams:Promise<Record<string,string|string[]|undefined>>}){
  const [query,panels]=await Promise.all([searchParams,getPanels().catch(()=>[])])
  const text=(key:string)=>typeof query[key]==="string"?query[key] as string:""

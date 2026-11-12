@@ -108,3 +108,4 @@ html{scroll-padding-top:108px}.enquiry-form .room-consent input{min-height:16px;
 @media(max-width:650px){.site-footer .footer-main{gap:16px;padding-bottom:20px}.site-footer .footer-main nav{gap:10px 20px}.site-footer .footer-main nav a,.site-footer .footer-contact>a{font-size:13px}.site-footer .footer-brand img{width:150px}.site-footer .footer-bottom p{flex-basis:100%}}
 
 .panel-card>.panel-matching-finish{font-size:14px;color:var(--ink);margin-top:8px}
+.about-page-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}.about-page-intro h1{font-size:clamp(40px,5vw,68px);white-space:pre-line}.about-page-intro img{width:100%;height:auto}.about-page-intro p{font-size:17px}@media(max-width:750px){.about-page-intro{grid-template-columns:1fr;gap:32px}}

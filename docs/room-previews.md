@@ -1,0 +1,11 @@
+# Room preview requests
+
+Customers use /room-preview or See it in your room on a product page. Name, email, phone, Australian postcode, at least one room photo and permission for AI-assisted processing/contact are required. Panel, finish and wall instructions are optional. Up to three JPG/PNG/WebP photos are resized and re-encoded in the browser (maximum 1800 px edge; up to 2 MB each sent to the server). HEIC must be exported as JPG first.
+
+Submissions pass through the same-origin Next.js proxy with a private shared key to /store/room-previews. Both layers bound payload sizes; backend checks photo signatures, phone, consent, rate limits and submission idempotency before storage. Files are saved using Medusa's private S3 provider under room-requests/<submission-key>/, then the enquiry is saved with file metadata and consent timestamp. No image bytes are stored in the enquiry or notification JSON. Failed saves attempt cleanup; failed email delivery leaves the saved request for retries.
+
+The existing worker sends a Resend notification to ENQUIRY_TO_EMAIL (currently the existing enquiry recipient). It reads the private objects just before sending and includes actual image attachments. Customer email is Reply-To. No automatic AI generation or customer reply is enabled.
+
+Staff open Medusa > Enquiries, choose a Room preview request and download the submitted, resized photo(s). The photo endpoints require an administrator session; private objects are outside the public /media single-filename route. Create the visualisation in ChatGPT, review it and reply to the customer manually by email with the image. Change status to contacted/closed as appropriate. No OpenAI API key or local GPU connection is needed for this phase.
+
+Server migration Migration20261112090000 adds kind, room_photos and consent_at, preserving existing enquiries. The existing upload rate caps apply separately to room previews (two per client/email per 15 minutes, twenty total per hour). Future work: retention/cleanup policy and an approved customer-facing privacy notice, optionally staff-managed result delivery. Do not make customer photos public product assets or use them for marketing without separate permission.

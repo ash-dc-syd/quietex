@@ -28,3 +28,10 @@ test('database failure cleans up newly uploaded files',async()=>{
 test('room-preview notification explains attachments and escapes customer text',()=>{
  const {renderEmail}=require('../apps/backend/.medusa/server/src/modules/resend/service');const email=renderEmail('enquiry-received',{kind:'room_preview',name:'<script>bad</script>'});assert.match(email.subject,/photos attached/);assert(!email.html.includes('<script>'));assert.match(email.text,/ChatGPT/)
 })
+test('photo bytes are attached to email with customer Reply-To, without public photo URLs',async()=>{
+ const photos=require('../apps/backend/.medusa/server/src/lib/room-photos'),Provider=require('../apps/backend/.medusa/server/src/modules/resend/service').default
+ const originalRead=photos.readRoomPhoto,originalFetch=global.fetch;let payload
+ photos.readRoomPhoto=async()=>Buffer.from('private-photo-bytes')
+ global.fetch=async(_url,options)=>{payload=JSON.parse(options.body);return{ok:true,json:async()=>({id:'mail_test'})}}
+ try{await new Provider({}, {api_key:'test',from:'Quietex <test@example.com>'}).send({to:'recipient@example.com',template:'enquiry-received',data:{kind:'room_preview',email:'customer@example.com',room_photos:{files:[{key:'private',filename:'room-photo-1.jpg',mime:'image/jpeg'}]}}});assert.equal(payload.reply_to,'customer@example.com');assert.equal(payload.attachments.length,1);assert.equal(Buffer.from(payload.attachments[0].content,'base64').toString(),'private-photo-bytes');assert.equal(payload.attachments[0].filename,'room-photo-1.jpg');assert(!JSON.stringify(payload).includes('/media/'))}finally{photos.readRoomPhoto=originalRead;global.fetch=originalFetch}
+})

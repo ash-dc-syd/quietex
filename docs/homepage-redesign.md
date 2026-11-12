@@ -11,3 +11,5 @@ Copy and section order are applied through the existing visual editor, rather th
 The supplied collection-grid reference is implemented with tall image cards, genuine finish-image swatches, accurate Product/Lifestyle labels, and finish-tone filters based on the catalogue variant names. Products can belong to more than one finish group. Existing hover/focus transitions and product links remain. The collection enquiry section uses the same working contact form.
 
 Production build and TypeScript passed; all five panel calculator tests passed. Live desktop checks confirmed published copy/section order, inline form panel-to-finish selection, FAQ expansion, all eleven products, each finish filter, tall card ratio and the unchanged 300 ms lifestyle/product crossfade. Mobile and retained product workflows are checked after deployment.
+
+Footer refinement: centred the logo, horizontal wrapping navigation and email link; removed repeated footer taglines and headings; reduced padding. Calculator, retailer and contact links, copyright, product caveat and Back to top remain.

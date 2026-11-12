@@ -1,6 +1,7 @@
 import { model } from "@medusajs/framework/utils"
 export default model.define("quietex_enquiry", {
  id:model.id({prefix:"enq"}).primaryKey(),
+ kind:model.text().default("enquiry"),room_photos:model.json().nullable(),consent_at:model.dateTime().nullable(),
  name:model.text(),email:model.text(),phone:model.text().default(""),postcode:model.text(),
  product:model.text().default(""),finish:model.text().default(""),quantity:model.number().nullable(),
  message:model.text().default(""),subject:model.text().default(""),

@@ -2,6 +2,8 @@ import { createHash } from "node:crypto"
 import { AbstractNotificationProviderService } from "@medusajs/framework/utils"
 import type { ProviderSendNotificationDTO, ProviderSendNotificationResultsDTO } from "@medusajs/framework/types"
 
+import { readRoomPhoto, type RoomPhoto } from "../../lib/room-photos"
+
 type Options = { api_key: string; from: string }
 
 function escapeHtml(value: string) {
@@ -13,9 +15,10 @@ function escapeHtml(value: string) {
 export function renderEmail(template: string, data: Record<string, unknown>) {
   if (template === "enquiry-received") {
     const fields = [["Name",data.name],["Email",data.email],["Phone",data.phone],["Postcode",data.postcode],["Panel",data.product],["Finish",data.finish],["Quantity",data.quantity],["Subject",data.subject],["Message",data.message],["Reference",data.id]]
-    const text = fields.map(([label,value])=>`${label}: ${value ?? ""}`).join("\n\n")
-    return {subject:"New Quietex website enquiry",text,
-      html:`<html><body style="font-family:Arial,sans-serif;line-height:1.6;max-width:640px;margin:24px auto"><h1 style="font-size:24px">New Quietex enquiry</h1>${fields.map(([label,value])=>`<p><strong>${label}</strong><br><span style="white-space:pre-wrap">${escapeHtml(String(value ?? ""))}</span></p>`).join("")}<p>Manage this enquiry in Medusa → Enquiries.</p></body></html>`}
+    const room=data.kind==="room_preview"
+    const text = (room?"Room preview request. Room photos are attached. Create the preview manually in ChatGPT and reply to the customer.\n\n":"")+fields.map(([label,value])=>`${label}: ${value ?? ""}`).join("\n\n")
+    return {subject:room?"New Quietex room preview request (photos attached)":"New Quietex website enquiry",text,
+      html:`<html><body style="font-family:Arial,sans-serif;line-height:1.6;max-width:640px;margin:24px auto"><h1 style="font-size:24px">${room?"Room preview request":"New Quietex enquiry"}</h1>${room?"<p>Room photos are attached. Create the preview manually in ChatGPT, review it, and reply to the customer.</p>":""}${fields.map(([label,value])=>`<p><strong>${label}</strong><br><span style="white-space:pre-wrap">${escapeHtml(String(value ?? ""))}</span></p>`).join("")}<p>Manage this enquiry in Medusa → Enquiries.</p></body></html>`}
   }
   const invite = template === "user-invited"
   if (!invite && template !== "password-reset") throw new Error("Unsupported Quietex email template")
@@ -52,7 +55,9 @@ export default class ResendNotificationProvider extends AbstractNotificationProv
   async send(notification: ProviderSendNotificationDTO): Promise<ProviderSendNotificationResultsDTO> {
     const content = renderEmail(notification.template, notification.data || {})
     const replyTo = notification.template === "enquiry-received" ? notification.data?.email : null
-    const body = { from: this.options.from, to: [notification.to], ...content,
+    const attachments = notification.template==="enquiry-received"&&notification.data?.kind==="room_preview"
+      ? await Promise.all(((notification.data.room_photos as {files?:RoomPhoto[]}|undefined)?.files||[]).map(async photo=>({filename:photo.filename,content:(await readRoomPhoto(photo)).toString("base64"),content_type:photo.mime}))) : []
+    const body = { ...(attachments.length?{attachments}:{}), from: this.options.from, to: [notification.to], ...content,
       ...(typeof replyTo === "string" && /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(replyTo) ? {reply_to:replyTo} : {}) }
 
     // Retries of the same token/email must not send duplicate messages.

@@ -2,7 +2,9 @@
   "name": "@quietex/backend",
   "version": "0.1.0",
   "private": true,
-  "engines": { "node": ">=24 <25" },
+  "engines": {
+    "node": ">=24 <25"
+  },
   "scripts": {
     "dev": "medusa develop",
     "build": "medusa build",
@@ -11,11 +13,12 @@
     "db:migrate": "medusa db:migrate"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "3.1162.0",
     "@medusajs/admin-sdk": "2.22.3",
+    "@medusajs/caching-redis": "2.22.3",
     "@medusajs/cli": "2.22.3",
     "@medusajs/framework": "2.22.3",
-    "@medusajs/medusa": "2.22.3",
-    "@medusajs/caching-redis": "2.22.3"
+    "@medusajs/medusa": "2.22.3"
   },
   "devDependencies": {
     "@swc/core": "^1.7.28",

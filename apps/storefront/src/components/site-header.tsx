@@ -8,7 +8,7 @@ import { Arrow } from "./icons"
 
 export function SiteHeader({ announcement = "Considered design. Better acoustics." }: { announcement?: string }) {
   const [open, setOpen] = useState(false)
-  const links = [{ label: "Our panels", href: "/#panels" }, { label: "Spaces", href: "/#spaces" }, { label: "About Quietex", href: "/#about" }]
+  const links = [{ label: "Room preview", href: "/room-preview" },{ label: "Our panels", href: "/#panels" }, { label: "Spaces", href: "/#spaces" }, { label: "About Quietex", href: "/#about" }]
   return <>
     <div className="announcement">{announcement}</div>
     <header className="site-header">

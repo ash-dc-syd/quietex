@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Arrow } from "@/components/icons"
@@ -14,16 +14,14 @@ export default function Calculator({ panels }: { panels: Panel[] }) {
   const [width, setWidth] = useState(""), [height, setHeight] = useState("")
   const [rotated, setRotated] = useState(false), [allowance, setAllowance] = useState(10)
   const [result, setResult] = useState<Estimate | null>(null), [error, setError] = useState("")
-  const picker = useRef<HTMLDetailsElement>(null), pickerSummary = useRef<HTMLElement>(null)
   const selected = panels.find(p => p.handle === panel)
   const previewImage = selected?.finishes.find(f => f.name === finish)?.image || selected?.image
   function choosePanel(handle: string) { setPanel(handle); setFinish(""); setRotated(false); clear() }
-  function closePicker() { if (picker.current) picker.current.open = false; pickerSummary.current?.focus() }
   const size = selected?.size ? (rotated ? { widthMm: selected.size.heightMm, heightMm: selected.size.widthMm } : selected.size) : null
   function clear() { setResult(null); setError("") }
   function calculate(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault(); clear()
-    if (!size) { if (!selected && picker.current) { picker.current.open = true; pickerSummary.current?.focus() }; setError("Choose a panel with published dimensions, or contact us for help."); return }
+    if (!size) { setError("Choose a panel with published dimensions, or contact us for help."); return }
     try { setResult(calculatePanels(Number(width), Number(height), size, allowance)) }
     catch (e) { setError((e as Error).message) }
   }
@@ -39,19 +37,17 @@ export default function Calculator({ panels }: { panels: Panel[] }) {
         <div className="form-two"><label>Wall width (metres) *<input type="number" inputMode="decimal" min="0.01" max="30" step="0.001" required value={width} placeholder="e.g. 3.6" onChange={e => { setWidth(e.target.value); clear() }}/></label>
         <label>Wall height (metres) *<input type="number" inputMode="decimal" min="0.01" max="30" step="0.001" required value={height} placeholder="e.g. 2.4" onChange={e => { setHeight(e.target.value); clear() }}/></label></div>
         <div className="panel-photo-field"><p id="panel-choice-label" className="panel-choice-label">Panel *</p>
-          <details className="panel-photo-picker" ref={picker} onKeyDown={e => { if (e.key === "Escape") { e.preventDefault(); closePicker() } }} onBlur={e => { if (!e.currentTarget.contains(e.relatedTarget as Node)) { if (picker.current) picker.current.open = false } }}>
-            <summary ref={pickerSummary} aria-labelledby="panel-choice-label panel-choice-value">
-              {previewImage && <Image unoptimized src={previewImage} width={48} height={48} alt=""/>}
-              <span id="panel-choice-value">{selected?.title || "Choose a panel"}</span><span className="panel-picker-chevron" aria-hidden="true">⌄</span>
-            </summary>
-            <div className="panel-photo-options" role="radiogroup" aria-labelledby="panel-choice-label" aria-required="true">
-              {panels.map(p => <label className="panel-photo-option" key={p.handle}>
-                <input type="radio" name="panel" value={p.handle} checked={panel === p.handle} onChange={() => choosePanel(p.handle)} onClick={closePicker}/>
-                {p.image ? <Image unoptimized src={p.image} width={56} height={56} alt=""/> : <span className="panel-photo-placeholder" aria-hidden="true"/>}
-                <span>{p.title}</span>
-              </label>)}
-            </div>
-          </details>
+          {selected && <div className="panel-photo-selected">
+            {previewImage && <Image unoptimized src={previewImage} width={48} height={48} alt=""/>}
+            <span>{selected.title}{finish && <small>{finish}</small>}</span>
+          </div>}
+          <div className="panel-photo-options" role="radiogroup" aria-labelledby="panel-choice-label" aria-required="true">
+            {panels.map(p => <label className="panel-photo-option" key={p.handle}>
+              <input type="radio" name="panel" value={p.handle} required checked={panel === p.handle} onChange={() => choosePanel(p.handle)}/>
+              {p.image ? <Image unoptimized src={p.image} width={56} height={56} alt=""/> : <span className="panel-photo-placeholder" aria-hidden="true"/>}
+              <span>{p.title}</span>
+            </label>)}
+          </div>
           <p className="panel-picker-note">Choose by photo. Select a finish below to preview its colour.</p>
         </div>
         <label>Finish <small>optional</small><select value={finish} disabled={!selected} onChange={e => setFinish(e.target.value)}><option value="">Please advise</option>{selected?.finishes.map(f => <option key={f.name}>{f.name}</option>)}</select></label>

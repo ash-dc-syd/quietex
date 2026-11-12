@@ -13,4 +13,6 @@ Validation: storefront production build and TypeScript passed. Five calculation 
 
 ## Visual panel selection
 
-The panel picker pairs every catalogue name with its actual product photo, using the existing Product image role rather than Lifestyle imagery. The selected thumbnail switches to the chosen finish image when available. Native radio controls support keyboard selection, Escape closes the picker and its summary regains focus after selection. Missing images retain the labelled choice. Quantity calculations and the quote handoff are unchanged.
+The panel photo grid pairs every catalogue name with its actual product photo, using the existing Product image role rather than Lifestyle imagery. The selected thumbnail switches to the chosen finish image when available. The photo choices remain visible in a scrollable grid, using native required radio controls for pointer and keyboard selection. There are no custom focus, blur or auto-close handlers. Missing images retain the labelled choice. Quantity calculations and the quote handoff are unchanged.
+
+A browser renderer crash was reported after dropdown selection. Replaced the custom details dropdown and synchronous focus/blur/auto-close behavior with an always-visible native radio grid. This removes the suspected re-entrant focus path while preserving the photos and finish preview. The exact browser-internal cause is not confirmed.

@@ -14,6 +14,6 @@ export default async function PanelCalculator() {
       <p>Enter the width and height of the wall you want to cover. Choose a panel to estimate the quantity for your project.</p>
       <p className="contact-note">For full coverage of one rectangular wall. The estimate rounds up to whole panels in each row and column, without reusing offcuts or subtracting doors and windows. It does not determine how much acoustic treatment your room needs. We’ll confirm the layout and quantity when quoting.</p>
     </div>
-    <Calculator panels={panels.map(p => ({ handle: p.handle, title: p.title, size: panelSize(p.specifications), finishes: p.finishes.map(f => f.name) }))}/>
+    <Calculator panels={panels.map(p => ({ handle: p.handle, title: p.title, size: panelSize(p.specifications), image: p.productImage, finishes: p.finishes.map(f => ({ name: f.name, image: f.image })) }))}/>
   </main><SiteFooter/></>
 }

@@ -30,7 +30,7 @@ Production storefront build passed. Ten targeted Node tests passed. Local produc
 
 ## Before switching the domain
 
-- Migrate and verify existing WordPress media: the catalogue and published content still reference assets on the current domain.
+- Verify deployed media: all 75 referenced legacy assets were extracted from the supplied archive, checked and copied to the original `/wp-content/uploads/` paths. Storefront rendering uses local paths after image role selection, preserving gallery ordering and finish images. Archive logs, scripts and unrelated files were excluded. Checksums are recorded in `legacy-media-manifest.json`.
 - Confirm a restorable old-site backup and record the existing web DNS records privately.
 - Add the apex and www domains to Railway and use the exact DNS values Railway supplies. Preserve all email DNS records.
 - Set `NEXT_PUBLIC_SITE_URL=https://quietex.com.au` and `SITE_INDEXABLE=true` for the live storefront and rebuild. Update the backend storefront origin and permitted origins as needed.

@@ -1,4 +1,5 @@
 import "server-only"
+import { legacyMediaUrl } from "./legacy-media"
 import { resolveImageRoles, type RoleImage } from "./image-roles"
 import { medusaFetch } from "./medusa"
 
@@ -21,9 +22,9 @@ export async function getPanels(handle?: string): Promise<Panel[]> {
   return result.products.map(p => {
     const media = resolveImageRoles(p)
     return ({
-    id: p.id, title: p.title, handle: p.handle, description: p.description || "", thumbnail: p.thumbnail || "",
-    images: media.gallery, productImage:media.productImage, lifestyleImage:media.lifestyleImage, hasLifestyle:media.hasLifestyle,
+    id: p.id, title: p.title, handle: p.handle, description: p.description || "", thumbnail: legacyMediaUrl(p.thumbnail || ""),
+    images: media.gallery.map(legacyMediaUrl), productImage:legacyMediaUrl(media.productImage), lifestyleImage:legacyMediaUrl(media.lifestyleImage), hasLifestyle:media.hasLifestyle,
     specifications: Array.isArray(p.metadata?.specifications) ? p.metadata.specifications : [],
-    finishes: (p.variants || []).map(v => ({ id: v.id, name: v.title, image: v.thumbnail || p.metadata?.finish_images?.[v.title] || p.thumbnail || "" })),
+    finishes: (p.variants || []).map(v => ({ id: v.id, name: v.title, image: legacyMediaUrl(v.thumbnail || p.metadata?.finish_images?.[v.title] || p.thumbnail || "") })),
   })}).sort((a,b) => a.title.localeCompare(b.title))
 }

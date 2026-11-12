@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { legacyMediaUrl } from "@/lib/legacy-media"
 import Link from "next/link"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter, EnquirySection } from "@/components/site-footer"
@@ -9,5 +10,5 @@ export const metadata = { title: "About Quietex", description: "Acoustic panels 
 export default async function About() {
   const { content } = await medusaFetch<{content:SiteDocument}>("/store/site-content").catch(()=>({content:defaultContent}))
   const s = content.sections.find(s=>s.type==="about")?.settings || defaultContent.sections.find(s=>s.type==="about")!.settings
-  return <><SiteHeader/><main id="main"><section className="section-wrap about-page-intro"><div><p className="eyebrow">About Quietex</p><h1>{s.heading}</h1><p>{s.body}</p>{s.bodyTwo&&<p>{s.bodyTwo}</p>}<p><strong>{s.pointOneTitle}</strong> {s.pointOne}</p><p><strong>{s.pointTwoTitle}</strong> {s.pointTwo}</p><Link className="text-link" href="/our-products/">Explore the panels ↗</Link></div>{s.image&&<Image unoptimized src={s.image} alt={s.alt||"Quietex acoustic panels"} width={900} height={900}/>}</section><EnquirySection/></main><SiteFooter/></>
+  return <><SiteHeader/><main id="main"><section className="section-wrap about-page-intro"><div><p className="eyebrow">About Quietex</p><h1>{s.heading}</h1><p>{s.body}</p>{s.bodyTwo&&<p>{s.bodyTwo}</p>}<p><strong>{s.pointOneTitle}</strong> {s.pointOne}</p><p><strong>{s.pointTwoTitle}</strong> {s.pointTwo}</p><Link className="text-link" href="/our-products/">Explore the panels ↗</Link></div>{s.image&&<Image unoptimized src={legacyMediaUrl(s.image)} alt={s.alt||"Quietex acoustic panels"} width={900} height={900}/>}</section><EnquirySection/></main><SiteFooter/></>
 }

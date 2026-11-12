@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { legacyMediaUrl } from "@/lib/legacy-media"
 import Link from "next/link"
 import { Arrow, SoundLines } from "./icons"
 import { SiteHeader } from "./site-header"
@@ -11,7 +12,7 @@ const sectionLabel = (text: string) => text.replace(/^\s*0?\d+\s*\/\s*/, "")
 const lines = (text: string) => text.split("\n").map((line, i) => <span key={i}>{i > 0 && <br />}{line}</span>)
 export default function HomeView({ panels, content = defaultContent }: { panels: Panel[]; content?: SiteDocument }) {
  return <div className="homepage"><SiteHeader announcement={content.announcement} /><main id="main">{content.sections.filter(s=>s.enabled).map((section,index)=>{
- const s=section.settings
+ const s=Object.fromEntries(Object.entries(section.settings).map(([key,value])=>[key,legacyMediaUrl(value)]))
  const id=(type:string,anchor:string)=>content.sections.find(x=>x.type===type&&x.enabled)?.id===section.id?anchor:section.id
  let node
  switch(section.type) {

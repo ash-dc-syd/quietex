@@ -10,3 +10,6 @@
 !**/.env.template
 *.log
 .DS_Store
+
+# Reviewed, public legacy catalogue assets are part of the storefront.
+!/apps/storefront/public/wp-content/uploads/

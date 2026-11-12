@@ -31,7 +31,7 @@
         "key": "image",
         "label": "Image",
         "kind": "image",
-        "default": "https://quietex.com.au/wp-content/uploads/2025/10/home-theatre-hero.webp"
+        "default": "/wp-content/uploads/2025/10/home-theatre-hero.webp"
       },
       {
         "key": "alt",
@@ -169,7 +169,7 @@
         "key": "image",
         "label": "Image",
         "kind": "image",
-        "default": "https://quietex.com.au/wp-content/uploads/2026/02/charlotte-home-cinema-image-1-scaled.webp"
+        "default": "/wp-content/uploads/2026/02/charlotte-home-cinema-image-1-scaled.webp"
       },
       {
         "key": "alt",
@@ -253,7 +253,7 @@
         "key": "oneImage",
         "label": "First space image",
         "kind": "image",
-        "default": "https://quietex.com.au/wp-content/uploads/2025/10/home-theatre-hero.webp"
+        "default": "/wp-content/uploads/2025/10/home-theatre-hero.webp"
       },
       {
         "key": "twoTitle",
@@ -271,7 +271,7 @@
         "key": "twoImage",
         "label": "Second space image",
         "kind": "image",
-        "default": "https://quietex.com.au/wp-content/uploads/2025/10/office-hero.webp"
+        "default": "/wp-content/uploads/2025/10/office-hero.webp"
       }
     ]
   },
@@ -433,7 +433,7 @@
         "key": "image",
         "label": "Image",
         "kind": "image",
-        "default": "https://quietex.com.au/wp-content/uploads/2026/02/charlotte-home-cinema-image-1-scaled.webp"
+        "default": "/wp-content/uploads/2026/02/charlotte-home-cinema-image-1-scaled.webp"
       },
       {
         "key": "alt",

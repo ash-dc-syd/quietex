@@ -10,7 +10,7 @@ test('composite backing colours do not put timber in Light or Colour',()=>{
  assert.deepEqual(finishesForTone(timber,'Light'),[])
  assert.deepEqual(finishesForTone(timber,'Colour'),[])
  assert.equal(finishesForTone(timber,'Dark')[0].image,'blackwood.jpg')
- assert.equal(finishesForTone(timber,'Timber tones').length,2)
+ assert.equal(finishesForTone(timber,'Timber tones').length,1)
 })
 test('filter returns the matching finish image instead of the default colour',()=>{
  const finishes=[{name:'Olive Moss',image:'green.jpg'},{name:'Midnight Black',image:'black.jpg'}]
@@ -24,5 +24,5 @@ test('Light includes the real neutral finishes; unknown names stay in All panels
  assert.equal(finishesForTone(finishes,'Light').length,2)
  assert.equal(finishesForTone(finishes,'All panels').length,3)
  assert.deepEqual(finishesForTone([{name:'Blacklisted greyish backing'}],'Light'),[])
- assert.equal(finishesForTone([{name:' Sky Grey / Blackwood '}],'Timber tones').length,1)
+ assert.equal(finishesForTone([{name:' Sky Grey / Blackwood '}],'Dark').length,1)
 })

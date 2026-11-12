@@ -2,7 +2,7 @@ export const toneFilters = ["All panels", "Dark", "Light", "Colour", "Timber ton
 export type FinishTone = typeof toneFilters[number]
 
 // Deliberate catalogue classifications. Composite finishes describe backing/face;
-// the visible blackwood face is dark timber, not a light grey panel.
+// the visible blackwood face is Dark; walnut belongs under Timber tones.
 const groups: Record<string, readonly FinishTone[]> = {
   "cinema black": ["Dark"],
   "midnight black": ["Dark"],
@@ -16,7 +16,7 @@ const groups: Record<string, readonly FinishTone[]> = {
   "dark blue": ["Colour"],
   "oxford blue": ["Colour"],
   "navy blue/walnut": ["Timber tones"],
-  "sky grey/blackwood": ["Dark", "Timber tones"],
+  "sky grey/blackwood": ["Dark"],
 }
 export function finishesForTone<T extends { name: string }>(finishes: T[], tone: FinishTone): T[] {
   if (tone === "All panels") return finishes

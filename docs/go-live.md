@@ -43,3 +43,7 @@ The DNS switch has not been performed as part of these preparation changes.
 ## About page
 
 The original `/about/` route now has a full editorial layout: a room-photo hero, published brand introduction, PET felt material detail, project mockup guidance, retailer links and quote enquiry. Desktop/mobile navigation and the footer link directly to this page. The introduction and hero image continue using the published About settings in the website editor. Generic certification, recycled-content percentages, installation-safety and weight claims from the old page were not republished without product-specific evidence.
+
+## Plain-language copy revision
+
+Simplified the homepage and About wording, including navigation announcement, material descriptions, quote callouts and retailer text. Preserved layout, panel data, images and enquiry behaviour. Updated both editor field defaults and storefront defaults; existing saved homepage content was also revised and published through the authenticated Medusa editor, preserving section order, visibility, images and link targets.

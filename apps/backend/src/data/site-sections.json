@@ -13,19 +13,19 @@
         "key": "heading",
         "label": "Heading",
         "kind": "text",
-        "default": "Beautiful spaces."
+        "default": "Make your room"
       },
       {
         "key": "accent",
         "label": "Second heading line",
         "kind": "text",
-        "default": "Better sound."
+        "default": "sound better."
       },
       {
         "key": "body",
         "label": "Description",
         "kind": "textarea",
-        "default": "Less echo. More of what you want to hear.\nAcoustic panels that belong in your space."
+        "default": "Our acoustic panels help reduce echo in home theatres, living rooms and workspaces. Choose a style you like, or ask us for help."
       },
       {
         "key": "image",
@@ -79,13 +79,13 @@
         "key": "one",
         "label": "First benefit",
         "kind": "text",
-        "default": "Less echo, more clarity"
+        "default": "Helps reduce echo"
       },
       {
         "key": "two",
         "label": "Second benefit",
         "kind": "text",
-        "default": "Texture you can see and feel"
+        "default": "A choice of patterns and finishes"
       },
       {
         "key": "three",
@@ -103,25 +103,25 @@
         "key": "eyebrow",
         "label": "Eyebrow",
         "kind": "text",
-        "default": "Explore the collection"
+        "default": "Our panels"
       },
       {
         "key": "heading",
         "label": "Heading",
         "kind": "text",
-        "default": "A quieter room."
+        "default": "Find a panel"
       },
       {
         "key": "accent",
         "label": "Second heading line",
         "kind": "text",
-        "default": "Your kind of finish."
+        "default": "you like."
       },
       {
         "key": "body",
         "label": "Description",
         "kind": "textarea",
-        "default": "From understated textures to sculpted patterns, find a panel that feels at home in your interior."
+        "default": "Compare the patterns and available finishes, then open a panel to see its photos and dimensions."
       },
       {
         "key": "handles",
@@ -133,7 +133,7 @@
         "key": "linkLabel",
         "label": "Link label",
         "kind": "text",
-        "default": "View the full range"
+        "default": "View all panels"
       }
     ]
   },
@@ -145,25 +145,25 @@
         "key": "eyebrow",
         "label": "Eyebrow",
         "kind": "text",
-        "default": "Sound meets design"
+        "default": "About Quietex"
       },
       {
         "key": "heading",
         "label": "Heading",
         "kind": "textarea",
-        "default": "A room should feel\nas good as it looks."
+        "default": "A bit about Quietex"
       },
       {
         "key": "body",
         "label": "First paragraph",
         "kind": "textarea",
-        "default": "Bare walls and hard surfaces can leave a room sounding busy. Acoustic panels help soften reflected sound, making space for clearer conversations, music and movie nights."
+        "default": "Bare walls and hard surfaces can make a room echo. Our panels help reduce those reflections, whether you’re watching a film, listening to music or talking with friends."
       },
       {
         "key": "bodyTwo",
         "label": "Second paragraph",
         "kind": "textarea",
-        "default": "Quietex brings acoustic treatment into the design of your room, with finishes you’ll want to make a feature of."
+        "default": "Choose from the patterns and finishes in our range. If you’re unsure which panels to use or how many you need, send us your wall dimensions and we’ll help."
       },
       {
         "key": "image",
@@ -181,31 +181,31 @@
         "key": "pointOneTitle",
         "label": "First point title",
         "kind": "text",
-        "default": "Consider the sound."
+        "default": "Reduce echo."
       },
       {
         "key": "pointOne",
         "label": "First point",
         "kind": "text",
-        "default": "Reduce unwanted reflections within your room."
+        "default": "Help manage sound reflections inside the room."
       },
       {
         "key": "pointTwoTitle",
         "label": "Second point title",
         "kind": "text",
-        "default": "Make it your own."
+        "default": "Choose a finish."
       },
       {
         "key": "pointTwo",
         "label": "Second point",
         "kind": "text",
-        "default": "Explore colour, material and pattern."
+        "default": "See the colours and finishes available for each panel."
       },
       {
         "key": "linkLabel",
         "label": "Link label",
         "kind": "text",
-        "default": "Let’s talk about your space"
+        "default": "Ask us about your room"
       }
     ]
   },
@@ -217,25 +217,25 @@
         "key": "eyebrow",
         "label": "Eyebrow",
         "kind": "text",
-        "default": "A place for better sound"
+        "default": "Where to use them"
       },
       {
         "key": "heading",
         "label": "Heading",
         "kind": "text",
-        "default": "Different spaces."
+        "default": "Panels for home"
       },
       {
         "key": "accent",
         "label": "Second heading line",
         "kind": "text",
-        "default": "The same consideration."
+        "default": "and work."
       },
       {
         "key": "body",
         "label": "Description",
         "kind": "textarea",
-        "default": "For the films you love, the work you do and the moments in between."
+        "default": "Panels for home theatres, living rooms, offices and meeting rooms."
       },
       {
         "key": "oneTitle",
@@ -247,7 +247,7 @@
         "key": "oneCaption",
         "label": "First space description",
         "kind": "text",
-        "default": "Home theatres, listening rooms & living spaces"
+        "default": "Home theatres, listening rooms and living rooms"
       },
       {
         "key": "oneImage",
@@ -265,7 +265,7 @@
         "key": "twoCaption",
         "label": "Second space description",
         "kind": "text",
-        "default": "Offices, studios & commercial interiors"
+        "default": "Offices, studios and meeting rooms"
       },
       {
         "key": "twoImage",
@@ -283,25 +283,25 @@
         "key": "eyebrow",
         "label": "Eyebrow",
         "kind": "text",
-        "default": "A few useful answers"
+        "default": "Before you choose"
       },
       {
         "key": "heading",
         "label": "Heading",
         "kind": "text",
-        "default": "Good questions."
+        "default": "Questions about"
       },
       {
         "key": "accent",
         "label": "Second heading line",
         "kind": "text",
-        "default": "Clear answers."
+        "default": "our panels?"
       },
       {
         "key": "body",
         "label": "Description",
         "kind": "textarea",
-        "default": "Not sure where to start?\nWe’re happy to help."
+        "default": "A few useful details before you choose your panels."
       },
       {
         "key": "question1",
@@ -313,7 +313,7 @@
         "key": "answer1",
         "label": "Answer 1",
         "kind": "textarea",
-        "default": "Acoustic panels help reduce echo and reflected sound inside a room. Soundproofing between rooms usually needs additional building treatments. Tell us what you’re trying to achieve and we can help you explore the options."
+        "default": "Acoustic panels help reduce echo and reflected sound inside a room. They don’t soundproof the room. Reducing sound travelling through walls usually needs additional building treatments."
       },
       {
         "key": "question2",
@@ -325,7 +325,7 @@
         "key": "answer2",
         "label": "Answer 2",
         "kind": "textarea",
-        "default": "Start with the room, the surfaces you want to treat and the look you prefer. Send us your room dimensions and a few details about how you use the space, and we can discuss suitable panels."
+        "default": "Think about the room, the wall you want to cover and the finish you like. Send us your wall dimensions and a photo if you’d like help choosing."
       },
       {
         "key": "question3",
@@ -337,7 +337,7 @@
         "key": "answer3",
         "label": "Answer 3",
         "kind": "textarea",
-        "default": "Quietex panels are currently sold through our retail partners, including Digital Cinema, Audio Junction and Instyle HiFi. Contact a retailer for pricing and availability, or send us a project enquiry."
+        "default": "Quietex panels are sold through Digital Cinema, Audio Junction and Instyle HiFi. Contact a retailer for pricing and availability, or send us an enquiry."
       },
       {
         "key": "question4",
@@ -361,19 +361,19 @@
         "key": "eyebrow",
         "label": "Eyebrow",
         "kind": "text",
-        "default": "Find your Quietex"
+        "default": "Where to buy"
       },
       {
         "key": "heading",
         "label": "Heading",
         "kind": "textarea",
-        "default": "Available through\nour retail partners."
+        "default": "Buy through our\nretail partners."
       },
       {
         "key": "body",
         "label": "Description",
         "kind": "textarea",
-        "default": "Speak with a retailer about pricing, availability and purchasing."
+        "default": "Contact Digital Cinema, Audio Junction or Instyle HiFi for pricing and availability."
       }
     ]
   },
@@ -385,19 +385,19 @@
         "key": "eyebrow",
         "label": "Eyebrow",
         "kind": "text",
-        "default": "A little guidance goes a long way"
+        "default": "Get in touch"
       },
       {
         "key": "heading",
         "label": "Heading",
         "kind": "textarea",
-        "default": "Let’s find the right\npanel for your space."
+        "default": "Need help choosing panels?"
       },
       {
         "key": "body",
         "label": "Description",
         "kind": "textarea",
-        "default": "Tell us what you have in mind. Share your room dimensions, preferred finish or a question about the range."
+        "default": "Send us your wall dimensions and the finish you’re considering. We’ll help with the panel choice and quantity."
       },
       {
         "key": "buttonLabel",

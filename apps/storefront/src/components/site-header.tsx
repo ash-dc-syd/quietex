@@ -6,7 +6,7 @@ import { useState } from "react"
 import { media } from "@/lib/catalogue"
 import { Arrow } from "./icons"
 
-export function SiteHeader({ announcement = "Considered design. Better acoustics." }: { announcement?: string }) {
+export function SiteHeader({ announcement = "Acoustic panels for homes and workspaces." }: { announcement?: string }) {
   const [open, setOpen] = useState(false)
   const links = [{ label: "Our panels", href: "/#panels" }, { label: "Spaces", href: "/#spaces" }, { label: "About Quietex", href: "/about/" }]
   return <>

@@ -24,7 +24,7 @@ export default function Calculator({ panels }: { panels: Panel[] }) {
   }
   const quote = result && size && selected ? `/contact?${new URLSearchParams({
     panel, finish, quantity: String(result.total), subject: "Panel calculator quote request",
-    message: `Panel calculator estimate — please confirm layout and quantity.\nWall: ${width} m wide × ${height} m high (${result.area.toFixed(2)} m²).\nPanel: ${selected.title}, ${size.widthMm} mm wide × ${size.heightMm} mm high.\nLayout: ${result.columns} columns × ${result.rows} rows = ${result.base} panels.\nExtra allowance: ${allowance}% (${result.extra} panels). Estimated total: ${result.total} panels.\nFull rectangular coverage; openings not deducted and offcuts not reused.`,
+    message: `Panel calculator estimate — please confirm layout and quantity.\nWall: ${width} m wide × ${height} m high (${result.area.toFixed(2)} m²).\nPanel: ${selected.title}, ${size.widthMm} mm wide × ${size.heightMm} mm high.\nLayout: ${result.columns} columns × ${result.rows} rows = ${result.base} panels.\nExtra allowance: ${allowance}% (${result.extra} ${result.extra === 1 ? "panel" : "panels"}). Estimated total: ${result.total} panels.\nFull rectangular coverage; openings not deducted and offcuts not reused.`,
   })}` : "/contact"
 
   return <div className="calculator-card enquiry-form">
@@ -51,7 +51,7 @@ export default function Calculator({ panels }: { panels: Panel[] }) {
         <defs><pattern id="panel-grid" width={size.widthMm} height={size.heightMm} patternUnits="userSpaceOnUse"><rect width={size.widthMm} height={size.heightMm} fill="#d7dfd1" stroke="#63735e" strokeWidth="2" vectorEffect="non-scaling-stroke"/></pattern></defs>
         <rect width={result.wallWidthMm} height={result.wallHeightMm} fill="url(#panel-grid)"/>
       </svg>
-      <p className="calculator-layout">{result.area.toFixed(2)} m² wall · {result.columns} columns × {result.rows} rows</p>
+      <p className="calculator-layout">{result.area.toFixed(2)} m² wall · {result.columns} {result.columns === 1 ? "column" : "columns"} × {result.rows} {result.rows === 1 ? "row" : "rows"}</p>
       <p className="form-privacy">Layout illustration only. Edge panels may need trimming. Cutting, pattern matching, gaps and installation details can change the final quantity.</p>
       <Link className="button button-dark" href={quote}>Request a Quote<Arrow diagonal/></Link>
     </section>}

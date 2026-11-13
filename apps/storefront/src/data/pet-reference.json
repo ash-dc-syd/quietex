@@ -1,0 +1,16 @@
+{
+  "source": "Supplied LightEFX PET Acoustic Panels, 12 mm reference, page 1",
+  "scope": "12 mm PET felt sample, Type A direct fixing with no air gap",
+  "method": "ISO 354:2003",
+  "reportedNrc": "0.40",
+  "reportedWeightedAbsorption": "0.30 (MH)",
+  "reportedAbsorptionClass": "D",
+  "points": [
+    { "frequency": 125, "absorption": 0.00 },
+    { "frequency": 250, "absorption": 0.06 },
+    { "frequency": 500, "absorption": 0.25 },
+    { "frequency": 1000, "absorption": 0.56 },
+    { "frequency": 2000, "absorption": 0.77 },
+    { "frequency": 4000, "absorption": 0.96 }
+  ]
+}

@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { PetPerformance } from "@/components/pet-performance"
 import { Arrow } from "@/components/icons"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter, EnquirySection, Retailers } from "@/components/site-footer"
@@ -40,6 +41,7 @@ export default async function About() {
         <figure className="about-material-photo"><Image unoptimized src="/wp-content/uploads/2026/02/adele-profile-image.webp" alt="Close view of the Adele acoustic panel’s felt texture and profile" width={1024} height={1024} sizes="(max-width: 800px) 100vw, 45vw" /><figcaption>Adele acoustic panel. See the product page for available finishes.</figcaption></figure>
         <div className="about-material-copy"><p className="eyebrow">What our panels are made from</p><h2 id="about-material-title">Made from<br /><em>PET felt.</em></h2><p className="about-material-intro">Our panels use PET felt to help absorb sound reflections. The range includes different surface patterns and finishes to suit your room.</p><div className="about-qualities">{qualities.map(quality => <div key={quality.title}><h3>{quality.title}</h3><p>{quality.body}</p></div>)}</div></div>
       </section>
+      <PetPerformance />
       <section className="section-wrap about-guidance" aria-labelledby="about-guidance-title"><p className="eyebrow">Not sure how it will look?</p><h2 id="about-guidance-title">Send us a photo.<br /><em>We’ll show you.</em></h2><div><p>Send us a photo of your wall and tell us which panels you like. We’ll put together a mockup and help estimate how many panels you’ll need.</p><Link className="text-link" href="/room-preview/">See it in your space <Arrow diagonal /></Link></div></section>
       <Retailers />
       <EnquirySection />

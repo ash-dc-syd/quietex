@@ -138,3 +138,21 @@ html{scroll-padding-top:108px}.enquiry-form .room-consent input{min-height:16px;
 @media(max-width:1000px){.about-story,.about-guidance{gap:32px}.about-material{gap:36px}.about-qualities{grid-template-columns:1fr;gap:20px}.about-material-photo{align-self:start}}
 @media(max-width:800px){.about-hero{min-height:500px}.about-hero-copy{padding:64px 24px}.about-hero h1{font-size:clamp(44px,8.5vw,68px)}.about-hero-copy>p:not(.eyebrow){font-size:18px}.about-story,.about-material,.about-guidance{grid-template-columns:1fr;gap:32px}.about-story-body .about-lead{font-size:21px}.about-material-photo{max-width:560px;width:100%;margin:0 auto}.about-qualities{grid-template-columns:1fr 1fr}.about-guidance>.eyebrow{grid-column:auto}.about-desktop-break{display:none}}
 @media(max-width:450px){.about-hero h1{font-size:43px}.about-hero{min-height:480px}.about-qualities{grid-template-columns:1fr}.about-story h2,.about-material h2,.about-guidance h2{font-size:34px}}
+
+/* Scoped 12 mm PET reference data; no whole-range certification claims. */
+.pet-performance{background:#f1f2eb;scroll-margin-top:100px}
+.pet-performance-intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:40px}
+.pet-performance-intro h2{margin:0}.pet-performance-intro>div>p:not(.eyebrow){margin:0 0 16px;color:var(--muted)}
+.pet-performance-intro .pet-scope{font-size:14px;border-left:3px solid #8a9b82;padding-left:16px}
+.pet-graph{background:#fff;padding:32px;margin:0;border:1px solid #d9ddd2}
+.pet-graph-heading{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.pet-graph-heading h3{font-size:18px;margin:0}.pet-graph-heading>span{font-size:13px;color:var(--muted)}
+.pet-graph picture,.pet-graph picture img{display:block;width:100%;height:auto}
+.pet-reference-ratings{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:24px;padding:24px 0;border-top:1px solid var(--line)}
+.pet-reference-ratings p{display:flex;flex-direction:column;gap:6px;margin:0}.pet-reference-ratings span{font-size:12px;color:var(--muted)}.pet-reference-ratings strong{font-size:25px;line-height:1.2;font-weight:500}
+.pet-data{border-top:1px solid var(--line);padding:18px 0;font-size:13px}.pet-data summary{cursor:pointer;font-size:14px}.pet-data p{max-width:840px;margin:16px 0 0;color:var(--muted)}
+.pet-data-table{overflow-x:auto;margin-top:20px}.pet-data table{width:100%;border-collapse:collapse;min-width:520px;text-align:left}.pet-data caption{text-align:left;margin-bottom:12px;font-size:13px}.pet-data th,.pet-data td{padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}.pet-data th{font-weight:500}.pet-graph figcaption{font-size:13px;color:var(--muted);margin-top:10px;max-width:800px}
+.pet-documentation{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px}.pet-documentation h3{font-size:24px;line-height:1.25;margin-bottom:16px}.pet-documentation p:not(.eyebrow){font-size:15px;color:var(--muted)}.pet-documentation .text-link{font-size:14px}
+.homepage .about-copy>.home-material-link{display:flex;margin-top:20px;font-size:14px}
+@media(max-width:800px){.pet-performance-intro,.pet-documentation{grid-template-columns:1fr;gap:28px}.pet-performance-intro{margin-bottom:28px}.pet-graph{padding:20px}.pet-reference-ratings{gap:16px;grid-template-columns:1fr 1fr}.pet-reference-ratings p:last-child{grid-column:1/-1}.pet-reference-ratings strong{font-size:23px}}
+@media(max-width:450px){.pet-graph{padding:16px 12px}.pet-graph-heading h3{font-size:16px}.pet-graph-heading>span{font-size:12px}.pet-reference-ratings{gap:20px}.pet-performance-intro h2{font-size:34px}}

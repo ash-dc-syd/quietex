@@ -47,3 +47,7 @@ The original `/about/` route now has a full editorial layout: a room-photo hero,
 ## Plain-language copy revision
 
 Simplified the homepage and About wording, including navigation announcement, material descriptions, quote callouts and retailer text. Preserved layout, panel data, images and enquiry behaviour. Updated both editor field defaults and storefront defaults; existing saved homepage content was also revised and published through the authenticated Medusa editor, preserving section order, visibility, images and link targets.
+
+## PET material information
+
+Added an About-page material reference graph with the six reported octave-band values from the supplied 12 mm PET literature. Labels, source, direct-fix/no-air-gap conditions and model-specific limitations accompany the graph and table. The homepage links to this section. Fire and environmental document enquiry links are included; unverified whole-range certifications, fireproof claims, recycled-content percentages and certification logos are excluded. See `pet-material-reference.md` for provenance and evidence still required.

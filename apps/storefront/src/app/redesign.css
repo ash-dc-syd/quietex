@@ -198,3 +198,12 @@ html{scroll-padding-top:108px}.enquiry-form .room-consent input{min-height:16px;
 .gallery-scroll:focus-visible,.product-gallery-navigation .product-gallery-thumbs button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media(max-width:600px){.product-gallery-navigation{grid-template-columns:32px minmax(0,1fr) 32px;gap:6px}.gallery-scroll{width:32px;height:36px}.product-gallery-navigation .product-gallery-thumbs img{width:48px;height:48px}}
 @media(prefers-reduced-motion:reduce){.gallery-scroll,.product-gallery-navigation .product-gallery-thumbs button{transition:none}}
+
+/* Product overview: separate the introduction from the useful dimensions. */
+.product-overview{margin:22px 0 26px}
+.product-overview .product-description{font-size:17px;line-height:1.65;max-width:48ch;margin:0;color:var(--muted);white-space:pre-line}
+.product-key-details{display:flex;flex-wrap:wrap;gap:20px 32px;border-block:1px solid var(--line);padding:18px 0;margin:22px 0 0}
+.product-key-details>div{min-width:110px}
+.product-key-details dt{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.product-key-details dd{font-size:16px;line-height:1.4;font-weight:500;letter-spacing:-.01em;color:var(--ink);margin:0}
+@media(max-width:600px){.product-overview{margin:18px 0 24px}.product-overview .product-description{font-size:15px}.product-key-details{gap:16px 24px;padding:16px 0;margin-top:18px}.product-key-details dd{font-size:15px}}

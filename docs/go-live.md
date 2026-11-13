@@ -63,3 +63,7 @@ Validation: storefront production build passed. Server-rendered form checks veri
 Removed the conflicting outer max-width from the shared contact-page grid. Its viewport-based section padding already centres a readable content area; combining both caused the calculator, contact form and photo form to collapse on wide screens. Capped the column gap and retained the single-column breakpoint at 850 px. Calculator arithmetic and field behaviour are unchanged.
 
 The product quote button now fits its label instead of spanning the full product column, with a 46 px minimum tap height and smaller text/padding. The selected panel and finish remain in the quote link.
+
+## Compact product layout
+
+Finish choices now use compact photo chips that wrap as needed instead of stretching across the column. The room mockup and retailer links sit together below the quote action. Product content is centred within 1200 px; the main image uses a bounded, uncropped frame and thumbnail images use a single scrollable row. Product-first gallery ordering, finish selection and quote/mockup URL parameters are unchanged.

@@ -182,3 +182,19 @@ html{scroll-padding-top:108px}.enquiry-form .room-consent input{min-height:16px;
 .product-secondary-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px 24px;margin-top:18px}
 .product-secondary-actions .text-link{font-size:14px;gap:10px;min-height:44px;margin:0;padding-bottom:4px;white-space:nowrap}
 @media(max-width:850px){.product-stage{grid-template-columns:minmax(0,1fr);gap:28px}.product-main-image>img{height:clamp(260px,48vh,380px);max-height:380px}.product-secondary-actions{gap:8px 18px}.product-secondary-actions .text-link{font-size:12px;gap:7px}}
+
+/* Product gallery: quiet thumbnail rail with accessible scroll controls. */
+.product-gallery-navigation{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:10px;margin-top:14px}
+.product-gallery-navigation .product-gallery-thumbs{position:relative;margin:0;padding:3px;gap:8px;scrollbar-width:none;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+.product-gallery-navigation .product-gallery-thumbs::-webkit-scrollbar{display:none}
+.product-gallery-navigation .product-gallery-thumbs button{border:1px solid transparent;border-radius:6px;background:#eeede8;padding:4px;scroll-snap-align:start;transition:border-color .18s,background .18s}
+.product-gallery-navigation .product-gallery-thumbs button:hover{background:#e5e3dc}
+.product-gallery-navigation .product-gallery-thumbs button[aria-pressed="true"]{border-color:var(--ink);background:#fff}
+.product-gallery-navigation .product-gallery-thumbs img{display:block;width:56px;height:56px;border-radius:3px}
+.gallery-scroll{display:grid;place-items:center;width:36px;height:36px;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;transition:background .18s,opacity .18s}
+.gallery-scroll:hover:not(:disabled){background:#eeede8}
+.gallery-scroll:disabled{opacity:.25;cursor:default}
+.gallery-scroll-prev svg{transform:rotate(180deg)}
+.gallery-scroll:focus-visible,.product-gallery-navigation .product-gallery-thumbs button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media(max-width:600px){.product-gallery-navigation{grid-template-columns:32px minmax(0,1fr) 32px;gap:6px}.gallery-scroll{width:32px;height:36px}.product-gallery-navigation .product-gallery-thumbs img{width:48px;height:48px}}
+@media(prefers-reduced-motion:reduce){.gallery-scroll,.product-gallery-navigation .product-gallery-thumbs button{transition:none}}

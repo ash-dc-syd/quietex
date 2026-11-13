@@ -25,7 +25,9 @@ const reviewedRoles: Record<string,ImageRole> = {
   "https://quietex.com.au/wp-content/uploads/2026/02/margot-feat-2-1024x1024.webp": "detail"
 }
 export function resolveImageRoles(input: { thumbnail?: string | null; images?: { url: string }[]; variants?: { thumbnail?: string | null }[]; metadata?: { image_roles?: RoleImage[] } | null }) {
- const urls = [...new Set([...(input.images || []).map(i=>i.url),input.thumbnail,...(input.variants || []).map(v=>v.thumbnail)].filter((u):u is string=>!!u))]
+ // The product Media list owns membership. Stale thumbnails/finish references must
+ // never resurrect photos removed from Media.
+ const urls = [...new Set((input.images || []).map(i=>i.url).filter(Boolean))]
  const assigned = new Map<string,ImageRole>()
  const ordered: RoleImage[] = []
  for(const image of Array.isArray(input.metadata?.image_roles)?input.metadata!.image_roles!:[]) {
@@ -34,6 +36,8 @@ export function resolveImageRoles(input: { thumbnail?: string | null; images?: {
  for(const url of urls)if(!assigned.has(url))ordered.push({url,role:reviewedRoles[url]||"product"})
  const product=ordered.filter(i=>i.role==="product"),detail=ordered.filter(i=>i.role==="detail"),lifestyle=ordered.filter(i=>i.role==="lifestyle")
  const gallery=[...product,...detail,...lifestyle]
- const productImage=product[0]?.url||detail[0]?.url||lifestyle[0]?.url||""
- return {imageRoles:ordered,gallery:gallery.map(i=>i.url),productImage,lifestyleImage:lifestyle[0]?.url||productImage,hasLifestyle:lifestyle.length>0}
+ const explicitProduct=ordered.find(i=>i.role==="product"&&assigned.has(i.url))?.url
+ const finishProduct=(input.variants||[]).map(v=>v.thumbnail).find(url=>!!url&&urls.includes(url))
+ const productImage=explicitProduct||finishProduct||product[0]?.url||detail[0]?.url||lifestyle[0]?.url||""
+ return {imageRoles:ordered,gallery:gallery.map(i=>i.url),productImage,lifestyleImage:lifestyle[0]?.url||(urls.includes(input.thumbnail||"")?input.thumbnail!:productImage),hasLifestyle:lifestyle.length>0}
 }

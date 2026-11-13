@@ -22,9 +22,9 @@ export async function getPanels(handle?: string): Promise<Panel[]> {
   return result.products.map(p => {
     const media = resolveImageRoles(p)
     return ({
-    id: p.id, title: p.title, handle: p.handle, description: p.description || "", thumbnail: legacyMediaUrl(p.thumbnail || ""),
+    id: p.id, title: p.title, handle: p.handle, description: p.description || "", thumbnail: legacyMediaUrl(media.gallery.includes(p.thumbnail || "") ? p.thumbnail! : media.productImage),
     images: media.gallery.map(legacyMediaUrl), productImage:legacyMediaUrl(media.productImage), lifestyleImage:legacyMediaUrl(media.lifestyleImage), hasLifestyle:media.hasLifestyle,
     specifications: Array.isArray(p.metadata?.specifications) ? p.metadata.specifications : [],
-    finishes: (p.variants || []).map(v => ({ id: v.id, name: v.title, image: legacyMediaUrl(v.thumbnail || p.metadata?.finish_images?.[v.title] || p.thumbnail || "") })),
+    finishes: (p.variants || []).map(v => ({ id: v.id, name: v.title, image: legacyMediaUrl([v.thumbnail, p.metadata?.finish_images?.[v.title]].find(url => !!url && media.gallery.includes(url)) || media.productImage) })),
   })}).sort((a,b) => a.title.localeCompare(b.title))
 }

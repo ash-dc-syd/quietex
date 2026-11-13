@@ -4,9 +4,9 @@ import type { Panel } from "@/lib/products"
 import { Arrow } from "./icons"
 
 export function PanelCard({ panel, showFinishes = false, displayFinish }: { panel: Panel; showFinishes?: boolean; displayFinish?: Panel["finishes"][number] }) {
-  const lifestyleImage = displayFinish?.image || panel.lifestyleImage
+  const lifestyleImage = panel.hasLifestyle ? panel.lifestyleImage : displayFinish?.image || panel.lifestyleImage
   const productImage = displayFinish?.image || panel.productImage
-  const hasLifestyle = !displayFinish && panel.hasLifestyle
+  const hasLifestyle = panel.hasLifestyle
   return <Link href={`/product/${panel.handle}`} className="panel-card">
     <div className={`panel-image${hasLifestyle?" panel-image-lifestyle":""}${lifestyleImage!==productImage?" panel-image-swap":""}`}>{lifestyleImage && <Image className="panel-default-image" unoptimized src={lifestyleImage} width={768} height={768} alt={`${panel.title}${displayFinish?` in ${displayFinish.name}`:hasLifestyle?" in a room":" acoustic panel"}`} />}{productImage&&lifestyleImage!==productImage&&<Image className="panel-hover-image" unoptimized src={productImage} width={768} height={768} alt="" aria-hidden="true"/>}<span className="panel-open"><Arrow diagonal /></span></div>
     <div className="panel-name"><h3>{panel.title}</h3></div>

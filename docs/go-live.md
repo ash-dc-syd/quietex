@@ -67,3 +67,10 @@ The product quote button now fits its label instead of spanning the full product
 ## Compact product layout
 
 Finish choices now use compact photo chips that wrap as needed instead of stretching across the column. The room mockup and retailer links sit together below the quote action. Product content is centred within 1200 px; the main image uses a bounded, uncropped frame and thumbnail images use a single scrollable row. Product-first gallery ordering, finish selection and quote/mockup URL parameters are unchanged.
+
+## Finish photos and removed media
+- Finish photo upload/picking is available on individual variant pages and first in the parent product editor. Save product page after uploading; new finish photos are included in product Media.
+- Product Media owns storefront image membership. Deleted gallery photos cannot return via stale thumbnail, finish or image-role metadata. Removing all photos produces an empty gallery.
+- Cards retain lifestyle-to-product fades, including filtered cards with a lifestyle image. Existing cards without a lifestyle photo can switch from the catalogue thumbnail to the actual finish photo when these differ.
+- Replacement Adele and Caroline photos were visually reviewed and tagged; finish selections now use their new panel photos rather than removed WordPress references.
+- Validation: backend type check/build and storefront production build; regression cases cover removed photos, empty galleries, explicit image roles and fallback hover photos.

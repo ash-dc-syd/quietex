@@ -25,6 +25,6 @@ export async function getPanels(handle?: string): Promise<Panel[]> {
     id: p.id, title: p.title, handle: p.handle, description: p.description || "", thumbnail: legacyMediaUrl(media.gallery.includes(p.thumbnail || "") ? p.thumbnail! : media.productImage),
     images: media.gallery.map(legacyMediaUrl), productImage:legacyMediaUrl(media.productImage), lifestyleImage:legacyMediaUrl(media.lifestyleImage), hasLifestyle:media.hasLifestyle,
     specifications: Array.isArray(p.metadata?.specifications) ? p.metadata.specifications : [],
-    finishes: (p.variants || []).map(v => ({ id: v.id, name: v.title, image: legacyMediaUrl([v.thumbnail, p.metadata?.finish_images?.[v.title]].find(url => !!url && media.gallery.includes(url)) || media.productImage) })),
+    finishes: (p.variants || []).map(v => ({ id: v.id, name: v.title, image: legacyMediaUrl([v.thumbnail, p.metadata?.finish_images?.[v.title]].find(url => !!url && media.gallery.includes(url)) || "") })),
   })}).sort((a,b) => a.title.localeCompare(b.title))
 }

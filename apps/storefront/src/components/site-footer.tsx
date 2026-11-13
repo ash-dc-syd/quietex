@@ -26,7 +26,7 @@ export function SiteFooter() {
   return <footer className="site-footer">
     <div className="footer-main">
       <div className="footer-brand"><Link href="/" aria-label="Quietex home"><Image unoptimized src={media.logoLight} width={170} height={30} alt="Quietex" /></Link></div>
-      <nav aria-label="Footer navigation"><Link href="/#panels">Our panels</Link><Link href="/#spaces">Spaces</Link><Link href="/about/">About Quietex</Link><Link href="/#retailers">Where to buy</Link><Link href="/panel-calculator">Panel calculator</Link><Link href="/contact-us/">Contact</Link></nav>
+      <nav aria-label="Footer navigation"><Link href="/our-products">Our panels</Link><Link href="/#spaces">Spaces</Link><Link href="/about/">About Quietex</Link><Link href="/#retailers">Where to buy</Link><Link href="/panel-calculator">Panel calculator</Link><Link href="/contact-us/">Contact</Link></nav>
       <div className="footer-contact"><a href="mailto:enquiries@quietex.com.au">enquiries@quietex.com.au <Arrow diagonal /></a></div>
     </div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Quietex</span><a href="#main">Back to top ↑</a><p>Images are illustrative. Colours may vary by screen and production batch. Product dimensions may vary by ±5 mm.</p></div>

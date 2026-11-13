@@ -61,3 +61,5 @@ Validation: storefront production build passed. Server-rendered form checks veri
 ## Wide-screen calculator and contact layouts
 
 Removed the conflicting outer max-width from the shared contact-page grid. Its viewport-based section padding already centres a readable content area; combining both caused the calculator, contact form and photo form to collapse on wide screens. Capped the column gap and retained the single-column breakpoint at 850 px. Calculator arithmetic and field behaviour are unchanged.
+
+The product quote button now fits its label instead of spanning the full product column, with a 46 px minimum tap height and smaller text/padding. The selected panel and finish remain in the quote link.

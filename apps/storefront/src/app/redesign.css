@@ -167,3 +167,5 @@ html{scroll-padding-top:108px}.enquiry-form .room-consent input{min-height:16px;
 .contact-page.section-wrap{width:100%;max-width:none;margin:0;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);column-gap:clamp(32px,5vw,80px)}
 .contact-page.section-wrap>*{min-width:0}
 @media(max-width:850px){.contact-page.section-wrap{grid-template-columns:minmax(0,1fr);gap:36px}}
+
+.product-info .product-quote{width:fit-content;max-width:100%;min-height:46px;padding:10px 20px;font-size:14px;gap:16px;align-self:flex-start}

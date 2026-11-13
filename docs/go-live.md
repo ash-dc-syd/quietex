@@ -57,3 +57,7 @@ Added an About-page material reference graph with the six reported octave-band v
 The homepage keeps one short enquiry form with name, email, postcode and optional message. Contact retains the full quote form, including panel, finish, quantity and project details. About and the collection use compact quote links; product pages retain the finish-aware quote button beside the product and remove the repeated bottom enquiry block. Room-photo requests retain their separate photo-upload form. Product and calculator quote links go directly to `/contact-us/`, retaining their query parameters. No enquiry API, email delivery or photo-storage logic was changed.
 
 Validation: storefront production build passed. Server-rendered form checks verified the four-field homepage form and full-form panel, finish, quantity and message prefills. The compact payload was accepted by the existing enquiry validator without optional phone or quantity values. No external test messages were sent.
+
+## Wide-screen calculator and contact layouts
+
+Removed the conflicting outer max-width from the shared contact-page grid. Its viewport-based section padding already centres a readable content area; combining both caused the calculator, contact form and photo form to collapse on wide screens. Capped the column gap and retained the single-column breakpoint at 850 px. Calculator arithmetic and field behaviour are unchanged.

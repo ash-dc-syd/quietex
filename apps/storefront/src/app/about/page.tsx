@@ -3,7 +3,7 @@ import Link from "next/link"
 import { PetPerformance } from "@/components/pet-performance"
 import { Arrow } from "@/components/icons"
 import { SiteHeader } from "@/components/site-header"
-import { SiteFooter, EnquirySection, Retailers } from "@/components/site-footer"
+import { SiteFooter, QuoteCallout, Retailers } from "@/components/site-footer"
 import { legacyMediaUrl } from "@/lib/legacy-media"
 import { medusaFetch } from "@/lib/medusa"
 import { defaultContent, type SiteDocument } from "@/lib/site-content"
@@ -44,7 +44,7 @@ export default async function About() {
       <PetPerformance />
       <section className="section-wrap about-guidance" aria-labelledby="about-guidance-title"><p className="eyebrow">Not sure how it will look?</p><h2 id="about-guidance-title">Send us a photo.<br /><em>We’ll show you.</em></h2><div><p>Send us a photo of your wall and tell us which panels you like. We’ll put together a mockup and help estimate how many panels you’ll need.</p><Link className="text-link" href="/room-preview/">See it in your space <Arrow diagonal /></Link></div></section>
       <Retailers />
-      <EnquirySection />
+      <QuoteCallout />
     </main>
     <SiteFooter />
   </div>

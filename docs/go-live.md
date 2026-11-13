@@ -51,3 +51,9 @@ Simplified the homepage and About wording, including navigation announcement, ma
 ## PET material information
 
 Added an About-page material reference graph with the six reported octave-band values from the supplied 12 mm PET literature. Labels, source, direct-fix/no-air-gap conditions and model-specific limitations accompany the graph and table. The homepage links to this section. Fire and environmental document enquiry links are included; unverified whole-range certifications, fireproof claims, recycled-content percentages and certification logos are excluded. See `pet-material-reference.md` for provenance and evidence still required.
+
+## Fewer repeated enquiry sections
+
+The homepage keeps one short enquiry form with name, email, postcode and optional message. Contact retains the full quote form, including panel, finish, quantity and project details. About and the collection use compact quote links; product pages retain the finish-aware quote button beside the product and remove the repeated bottom enquiry block. Room-photo requests retain their separate photo-upload form. Product and calculator quote links go directly to `/contact-us/`, retaining their query parameters. No enquiry API, email delivery or photo-storage logic was changed.
+
+Validation: storefront production build passed. Server-rendered form checks verified the four-field homepage form and full-form panel, finish, quantity and message prefills. The compact payload was accepted by the existing enquiry validator without optional phone or quantity values. No external test messages were sent.

@@ -25,13 +25,13 @@ export default function Calculator({ panels }: { panels: Panel[] }) {
     try { setResult(calculatePanels(Number(width), Number(height), size, allowance)) }
     catch (e) { setError((e as Error).message) }
   }
-  const quote = result && size && selected ? `/contact?${new URLSearchParams({
+  const quote = result && size && selected ? `/contact-us/?${new URLSearchParams({
     panel, finish, quantity: String(result.total), subject: "Panel calculator quote request",
     message: `Panel calculator estimate — please confirm layout and quantity.\nWall: ${width} m wide × ${height} m high (${result.area.toFixed(2)} m²).\nPanel: ${selected.title}, ${size.widthMm} mm wide × ${size.heightMm} mm high.\nLayout: ${result.columns} columns × ${result.rows} rows = ${result.base} panels.\nExtra allowance: ${allowance}% (${result.extra} ${result.extra === 1 ? "panel" : "panels"}). Estimated total: ${result.total} panels.\nFull rectangular coverage; openings not deducted and offcuts not reused.`,
-  })}` : "/contact"
+  })}` : "/contact-us/"
 
   return <div className="calculator-card enquiry-form">
-    {panels.length === 0 ? <p role="status">Panel sizes are temporarily unavailable. <Link href="/contact">Send us your wall dimensions</Link> and we’ll help with an estimate.</p> : <>
+    {panels.length === 0 ? <p role="status">Panel sizes are temporarily unavailable. <Link href="/contact-us/">Send us your wall dimensions</Link> and we’ll help with an estimate.</p> : <>
     <form onSubmit={calculate}>
       <fieldset><legend className="sr-only">Calculate your panel quantity</legend>
         <div className="form-two"><label>Wall width (metres) *<input type="number" inputMode="decimal" min="0.01" max="30" step="0.001" required value={width} placeholder="e.g. 3.6" onChange={e => { setWidth(e.target.value); clear() }}/></label>
@@ -51,7 +51,7 @@ export default function Calculator({ panels }: { panels: Panel[] }) {
           <p className="panel-picker-note">Choose by photo. Select a finish below to preview its colour.</p>
         </div>
         <label>Finish <small>optional</small><select value={finish} disabled={!selected} onChange={e => setFinish(e.target.value)}><option value="">Please advise</option>{selected?.finishes.map(f => <option key={f.name}>{f.name}</option>)}</select></label>
-        {selected && !size && <p className="form-error">This panel needs a custom estimate. <Link href={`/contact?${new URLSearchParams({ panel, subject: "Panel quantity advice" })}`}>Ask us about quantities.</Link></p>}
+        {selected && !size && <p className="form-error">This panel needs a custom estimate. <Link href={`/contact-us/?${new URLSearchParams({ panel, subject: "Panel quantity advice" })}`}>Ask us about quantities.</Link></p>}
         {size && <p className="calculator-size">Panel layout: <strong>{size.widthMm} mm wide × {size.heightMm} mm high</strong></p>}
         <div className="form-two"><label>Panel orientation<select value={rotated ? "rotated" : "upright"} disabled={!size || size.widthMm === size.heightMm} onChange={e => { setRotated(e.target.value === "rotated"); clear() }}><option value="upright">Tall edge upright</option><option value="rotated">Wide edge across</option></select></label>
         <label>Extra allowance<select value={allowance} onChange={e => { setAllowance(Number(e.target.value)); clear() }}><option value={0}>None</option><option value={10}>10% extra</option><option value={15}>15% extra</option></select></label></div>

@@ -156,3 +156,9 @@ html{scroll-padding-top:108px}.enquiry-form .room-consent input{min-height:16px;
 .homepage .about-copy>.home-material-link{display:flex;margin-top:20px;font-size:14px}
 @media(max-width:800px){.pet-performance-intro,.pet-documentation{grid-template-columns:1fr;gap:28px}.pet-performance-intro{margin-bottom:28px}.pet-graph{padding:20px}.pet-reference-ratings{gap:16px;grid-template-columns:1fr 1fr}.pet-reference-ratings p:last-child{grid-column:1/-1}.pet-reference-ratings strong{font-size:23px}}
 @media(max-width:450px){.pet-graph{padding:16px 12px}.pet-graph-heading h3{font-size:16px}.pet-graph-heading>span{font-size:12px}.pet-reference-ratings{gap:20px}.pet-performance-intro h2{font-size:34px}}
+
+/* Keep the homepage form short and secondary pages focused on their content. */
+.quote-callout{display:flex;justify-content:space-between;align-items:center;gap:28px;padding-top:36px;padding-bottom:36px;border-top:1px solid var(--line);background:var(--paper)}
+.quote-callout h2{font-size:clamp(24px,2.4vw,32px);line-height:1.2;margin:0 0 8px}.quote-callout p{font-size:15px;color:var(--muted);margin:0}.quote-callout .button{flex-shrink:0;white-space:nowrap}
+.compact-enquiry .compact-postcode{max-width:220px}.compact-enquiry textarea{min-height:110px}
+@media(max-width:650px){.quote-callout{align-items:flex-start;flex-direction:column;gap:20px;padding-top:28px;padding-bottom:28px}.quote-callout .button{width:100%;justify-content:space-between}.compact-enquiry .compact-postcode{max-width:none}}

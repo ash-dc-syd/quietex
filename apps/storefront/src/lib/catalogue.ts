@@ -15,5 +15,5 @@ export const retailers = [
 ]
 
 export function enquiryHref(subject: string) {
-  return `/contact?${new URLSearchParams({subject}).toString()}`
+  return `/contact-us/?${new URLSearchParams({subject}).toString()}`
 }

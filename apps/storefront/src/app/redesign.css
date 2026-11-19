@@ -225,7 +225,7 @@ html{scroll-padding-top:108px}.enquiry-form .room-consent input{min-height:16px;
 
 /* Reuse the panel calculator in a focused, scrollable product-page dialog. */
 .product-secondary-actions .product-calculator-trigger{background:transparent;border:0;border-bottom:1px solid currentColor;border-radius:0;cursor:pointer;font-family:inherit;display:inline-flex}
-.product-calculator-dialog{width:min(680px,calc(100vw - 32px));max-width:calc(100vw - 32px);max-height:90dvh;border:1px solid var(--line);border-radius:12px;padding:0;background:var(--paper);color:var(--ink);overflow:auto;overscroll-behavior:contain}
+.product-calculator-dialog{margin:auto;width:min(680px,calc(100vw - 32px));max-width:calc(100vw - 32px);max-height:90dvh;border:1px solid var(--line);border-radius:12px;padding:0;background:var(--paper);color:var(--ink);overflow:auto;overscroll-behavior:contain}
 .product-calculator-dialog::backdrop{background:rgba(15,22,17,.65)}
 .product-calculator-content{padding:28px}
 .product-calculator-content>header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:18px}

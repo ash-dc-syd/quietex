@@ -14,7 +14,7 @@ export function ProductCalculator({ panel, finish }: { panel: Panel; finish: str
     if (!open && dialog.current?.open) dialog.current?.close()
   }, [open])
   return <>
-    <button className="text-link product-calculator-trigger" type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}>Panel calculator<Arrow diagonal /></button>
+    <button className="button button-dark product-quote product-calculator-trigger" type="button" aria-haspopup="dialog" onClick={() => setOpen(true)}>Panel calculator<Arrow diagonal /></button>
     <dialog ref={dialog} className="product-calculator-dialog" aria-labelledby={`${id}-title`} onClose={() => setOpen(false)} onClick={event => { if (event.target === event.currentTarget) setOpen(false) }}>
       <div className="product-calculator-content"><header><div><p className="eyebrow">Plan your wall</p><h2 id={`${id}-title`}>Panel calculator</h2></div><button type="button" className="product-calculator-close" aria-label="Close panel calculator" autoFocus onClick={() => setOpen(false)}>Close ×</button></header>
         <p className="product-calculator-intro">Enter your wall dimensions to estimate how many {panel.title} panels you need.</p>

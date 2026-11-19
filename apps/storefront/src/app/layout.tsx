@@ -3,6 +3,7 @@ import { headers } from "next/headers"
 import { isIndexable, siteOrigin } from "@/lib/site-url"
 import "./globals.css"
 import "./redesign.css"
+import "./gallery.css"
 
 export async function generateMetadata(): Promise<Metadata> {
   const index = isIndexable((await headers()).get("host"))

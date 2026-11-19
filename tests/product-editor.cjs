@@ -11,3 +11,7 @@ test('stale product edits are rejected before a workflow runs',async()=>{await a
 test('invalid, duplicate and unassociated image roles cannot be saved',async()=>{
  for(const imageRoles of [[{url:'https://example.com/x.png',role:'wrong'}],[{url:'javascript:bad',role:'product'}],[{url:'https://example.com/x.png',role:'product'},{url:'https://example.com/x.png',role:'detail'}],[{url:'https://foreign.example/x.png',role:'lifestyle'}]])await assert.rejects(POST({body:{...body,imageRoles},params:{id:current.id},scope},{}),/valid specification/)
 })
+
+test('lifestyle upload URLs must be safe and bounded',async()=>{
+ for(const uploadedImages of [['javascript:bad'],['http://example.com/x.jpg'],Array(101).fill('https://example.com/x.jpg'),[42]])await assert.rejects(POST({body:{...body,uploadedImages},params:{id:current.id},scope},{}),/valid specification/)
+})

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useId, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Arrow } from "@/components/icons"
@@ -9,8 +9,10 @@ import { calculatePanels, type PanelSize } from "@/lib/panel-calculator"
 type Panel = { handle: string; title: string; size: PanelSize | null; image: string; finishes: { name: string; image: string }[] }
 type Estimate = ReturnType<typeof calculatePanels>
 
-export default function Calculator({ panels }: { panels: Panel[] }) {
-  const [panel, setPanel] = useState(""), [finish, setFinish] = useState("")
+export default function Calculator({ panels, initialPanel = "", initialFinish = "", fixedPanel = false }: { panels: Panel[]; initialPanel?: string; initialFinish?: string; fixedPanel?: boolean }) {
+  const id = useId()
+  const initial = panels.find(p => p.handle === initialPanel)
+  const [panel, setPanel] = useState(initial?.handle || ""), [finish, setFinish] = useState(initial?.finishes.some(f => f.name === initialFinish) ? initialFinish : "")
   const [width, setWidth] = useState(""), [height, setHeight] = useState("")
   const [rotated, setRotated] = useState(false), [allowance, setAllowance] = useState(10)
   const [result, setResult] = useState<Estimate | null>(null), [error, setError] = useState("")
@@ -36,19 +38,19 @@ export default function Calculator({ panels }: { panels: Panel[] }) {
       <fieldset><legend className="sr-only">Calculate your panel quantity</legend>
         <div className="form-two"><label>Wall width (metres) *<input type="number" inputMode="decimal" min="0.01" max="30" step="0.001" required value={width} placeholder="e.g. 3.6" onChange={e => { setWidth(e.target.value); clear() }}/></label>
         <label>Wall height (metres) *<input type="number" inputMode="decimal" min="0.01" max="30" step="0.001" required value={height} placeholder="e.g. 2.4" onChange={e => { setHeight(e.target.value); clear() }}/></label></div>
-        <div className="panel-photo-field"><p id="panel-choice-label" className="panel-choice-label">Panel *</p>
+        <div className="panel-photo-field"><p id={`${id}-panel-choice-label`} className="panel-choice-label">Panel *</p>
           {selected && <div className="panel-photo-selected">
             {previewImage && <Image unoptimized src={previewImage} width={48} height={48} alt=""/>}
             <span>{selected.title}{finish && <small>{finish}</small>}</span>
           </div>}
-          <div className="panel-photo-options" role="radiogroup" aria-labelledby="panel-choice-label" aria-required="true">
+          {!fixedPanel && <div className="panel-photo-options" role="radiogroup" aria-labelledby={`${id}-panel-choice-label`} aria-required="true">
             {panels.map(p => <label className="panel-photo-option" key={p.handle}>
               <input type="radio" name="panel" value={p.handle} required checked={panel === p.handle} onChange={() => choosePanel(p.handle)}/>
               {p.image ? <Image unoptimized src={p.image} width={56} height={56} alt=""/> : <span className="panel-photo-placeholder" aria-hidden="true"/>}
               <span>{p.title}</span>
             </label>)}
-          </div>
-          <p className="panel-picker-note">Choose by photo. Select a finish below to preview its colour.</p>
+          </div>}
+          {!fixedPanel && <p className="panel-picker-note">Choose by photo. Select a finish below to preview its colour.</p>}
         </div>
         <label>Finish <small>optional</small><select value={finish} disabled={!selected} onChange={e => setFinish(e.target.value)}><option value="">Please advise</option>{selected?.finishes.map(f => <option key={f.name}>{f.name}</option>)}</select></label>
         {selected && !size && <p className="form-error">This panel needs a custom estimate. <Link href={`/contact-us/?${new URLSearchParams({ panel, subject: "Panel quantity advice" })}`}>Ask us about quantities.</Link></p>}
@@ -64,8 +66,8 @@ export default function Calculator({ panels }: { panels: Panel[] }) {
       <p className="eyebrow">YOUR ESTIMATED QUANTITY</p><h2>{result.total}<span> panels</span></h2>
       <p>{result.base} for the layout + {result.extra} extra ({allowance}% allowance)</p>
       <svg className="calculator-wall" viewBox={`0 0 ${result.wallWidthMm} ${result.wallHeightMm}`} role="img" aria-label={`Wall layout: ${result.columns} columns and ${result.rows} rows, with edge panels trimmed to fit`}>
-        <defs><pattern id="panel-grid" width={size.widthMm} height={size.heightMm} patternUnits="userSpaceOnUse"><rect width={size.widthMm} height={size.heightMm} fill="#d7dfd1" stroke="#63735e" strokeWidth="2" vectorEffect="non-scaling-stroke"/></pattern></defs>
-        <rect width={result.wallWidthMm} height={result.wallHeightMm} fill="url(#panel-grid)"/>
+        <defs><pattern id={`${id}-panel-grid`} width={size.widthMm} height={size.heightMm} patternUnits="userSpaceOnUse"><rect width={size.widthMm} height={size.heightMm} fill="#d7dfd1" stroke="#63735e" strokeWidth="2" vectorEffect="non-scaling-stroke"/></pattern></defs>
+        <rect width={result.wallWidthMm} height={result.wallHeightMm} fill={`url(#${id}-panel-grid)`}/>
       </svg>
       <p className="calculator-layout">{result.area.toFixed(2)} m² wall · {result.columns} {result.columns === 1 ? "column" : "columns"} × {result.rows} {result.rows === 1 ? "row" : "rows"}</p>
       <p className="form-privacy">Layout illustration only. Edge panels may need trimming. Cutting, pattern matching, gaps and installation details can change the final quantity.</p>

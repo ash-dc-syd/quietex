@@ -5,7 +5,7 @@ import { medusaFetch } from "./medusa"
 
 export type Panel = {
   id: string; title: string; handle: string; description: string; thumbnail: string;
-  images: string[]; lifestyleImages: string[]; productImage: string; lifestyleImage: string; hasLifestyle: boolean;
+  images: string[]; detailImages: string[]; lifestyleImages: string[]; productImage: string; lifestyleImage: string; hasLifestyle: boolean;
   specifications: { name: string; value: string }[];
   finishes: { id: string; name: string; image: string }[];
 }
@@ -23,7 +23,7 @@ export async function getPanels(handle?: string): Promise<Panel[]> {
     const media = resolveImageRoles(p)
     return ({
     id: p.id, title: p.title, handle: p.handle, description: p.description || "", thumbnail: legacyMediaUrl(media.gallery.includes(p.thumbnail || "") ? p.thumbnail! : media.productImage),
-    images: media.gallery.map(legacyMediaUrl), lifestyleImages:media.imageRoles.filter(image=>image.role==="lifestyle").map(image=>legacyMediaUrl(image.url)), productImage:legacyMediaUrl(media.productImage), lifestyleImage:legacyMediaUrl(media.lifestyleImage), hasLifestyle:media.hasLifestyle,
+    images: media.gallery.map(legacyMediaUrl), detailImages: media.imageRoles.filter(image=>image.role==="detail").map(image=>legacyMediaUrl(image.url)), lifestyleImages:media.imageRoles.filter(image=>image.role==="lifestyle").map(image=>legacyMediaUrl(image.url)), productImage:legacyMediaUrl(media.productImage), lifestyleImage:legacyMediaUrl(media.lifestyleImage), hasLifestyle:media.hasLifestyle,
     specifications: Array.isArray(p.metadata?.specifications) ? p.metadata.specifications : [],
     finishes: (p.variants || []).map(v => ({ id: v.id, name: v.title, image: legacyMediaUrl([v.thumbnail, p.metadata?.finish_images?.[v.title]].find(url => !!url && media.gallery.includes(url)) || "") })),
   })}).sort((a,b) => a.title.localeCompare(b.title))

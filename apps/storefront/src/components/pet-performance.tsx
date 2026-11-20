@@ -1,5 +1,3 @@
-import Link from "next/link"
-import { Arrow } from "./icons"
 import data from "@/data/pet-reference.json"
 
 export function PetPerformance() {
@@ -12,6 +10,5 @@ export function PetPerformance() {
       <details className="pet-data"><summary>View the values and test setup</summary><div className="pet-data-table"><table><caption>Reported octave-band absorption coefficients (αs)</caption><thead><tr><th scope="col">Frequency (Hz)</th>{data.points.map(point => <th scope="col" key={point.frequency}>{point.frequency}</th>)}</tr></thead><tbody><tr><th scope="row">Absorption (αs)</th>{data.points.map(point => <td key={point.frequency}>{point.absorption.toFixed(2)}</td>)}</tr></tbody></table></div><p>Reference method: {data.method}, Type A direct fixing. Reported sample: 2440 × 1220 × 12 mm, density 168 kg/m³, test area 10.8 m². Only the six values in the supplied table are plotted.</p></details>
       <figcaption>The reference sample absorbs more sound at mid and high frequencies. This does not show soundproofing between rooms or bass isolation.</figcaption>
     </figure>
-    <div className="pet-documentation"><div><p className="eyebrow">Fire performance</p><h3>Need a fire rating for your project?</h3><p>Tell us which panel you’re considering and how it will be installed. Ask us for the supporting fire classification and installation requirements for that product.</p><Link className="text-link" href="/contact-us/?subject=Fire%20classification%20and%20installation%20documents">Ask about fire documentation <Arrow diagonal /></Link></div><div><p className="eyebrow">Material information</p><h3>Recycled content and emissions</h3><p>Ask us for recycled-content and VOC information for your chosen panel and finish. Product documentation should confirm any environmental certification that applies.</p><Link className="text-link" href="/contact-us/?subject=Recycled%20content%20and%20VOC%20information">Ask about material information <Arrow diagonal /></Link></div></div>
   </section>
 }

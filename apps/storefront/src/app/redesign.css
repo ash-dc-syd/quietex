@@ -243,3 +243,46 @@ body:has(.product-calculator-dialog[open]){overflow:hidden}
 .homepage .retailer-section{padding-bottom:24px}
 .homepage [data-content-section]:has(>.retailer-section)+[data-content-section]>.section-wrap{padding-top:32px}
 @media(max-width:650px){.homepage [data-content-section]:has(>.retailer-section)+[data-content-section]>.section-wrap{padding-top:24px}}
+
+/* About: a separate editorial header and a compact, consistent content rhythm. */
+.about-page .about-hero{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);min-height:0;background:var(--paper);color:var(--ink);align-items:stretch}
+.about-page .about-hero-copy{padding:64px 48px 64px max(32px,calc((100vw - 1120px)/2));display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.about-page .about-hero h1{font-size:clamp(42px,4.8vw,70px);line-height:1.06;max-width:600px;margin:0}
+.about-page .about-hero h1 em{display:block;margin-top:4px}
+.about-page .about-hero-copy>p:not(.eyebrow){font-size:18px;line-height:1.65;color:var(--muted);max-width:390px;margin:24px 0 28px}
+.about-page .about-hero-visual{position:relative;min-width:0;min-height:470px}
+.about-page .about-hero-image{object-fit:cover;object-position:center;z-index:auto}
+.about-page .section-wrap{padding-top:64px;padding-bottom:64px}
+.about-page h2{font-size:clamp(30px,3.6vw,44px);line-height:1.12}
+.about-page .about-story{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px}
+.about-page .about-story-body .about-lead{font-size:21px;line-height:1.5;margin-bottom:20px}
+.about-page .about-story-body>p{font-size:16px;line-height:1.75;margin-bottom:16px;max-width:65ch}
+.about-page .about-material{gap:48px;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);background:#eeefe8;align-items:center}
+.about-page .about-material-photo img{aspect-ratio:1;max-height:500px;object-fit:contain;background:#e4e5dc}
+.about-page .about-material-photo figcaption{font-size:13px;margin-top:12px}
+.about-page .about-material-intro{font-size:16px;line-height:1.7;margin:20px 0 24px}
+.about-page .about-qualities{gap:14px;grid-template-columns:1fr 1fr}
+.about-page .about-qualities>div{background:var(--paper);border:0;padding:20px}
+.about-page .about-qualities h3{font-size:17px;margin-bottom:8px}
+.about-page .about-qualities p{font-size:14px;line-height:1.6}
+.about-page .pet-performance{background:var(--paper)}
+.about-page .pet-performance-intro{gap:48px;margin-bottom:28px}
+.about-page .pet-performance-intro>div>p{font-size:16px;line-height:1.7}
+.about-page .pet-performance-intro .pet-scope{font-size:14px}
+.about-page .pet-graph{border-radius:8px;padding:24px}
+.about-page .pet-documentation{gap:24px;margin-top:28px}
+.about-page .pet-documentation>div{border:1px solid var(--line);padding:24px;border-radius:8px}
+.about-page .pet-documentation h3{font-size:23px}
+.about-page .about-guidance{background:var(--green);color:var(--paper);border:0;gap:20px 64px}
+.about-page .about-guidance .eyebrow,.about-page .about-guidance>div>p{color:#d3d8cd}
+.about-page .about-guidance>div>p{font-size:16px;line-height:1.7;margin-bottom:24px}
+.about-page .about-planning-links{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.about-page .about-planning-links .text-link{color:var(--paper);border-color:#b5bdb1;font-size:14px}
+.about-page .retailer-section{padding-bottom:40px}
+.about-page .retailer-list{margin-top:28px;gap:20px}
+.about-page .retailer-list a{min-height:145px;padding:24px;gap:24px}
+.about-page .retailer-list h3{font-size:22px}
+.about-page .quote-callout{padding-top:28px;padding-bottom:28px}
+@media(max-width:1000px){.about-page .about-hero-copy{padding-right:28px}.about-page .about-hero h1{font-size:48px}.about-page .about-material,.about-page .about-story{gap:32px}.about-page .about-qualities>div{padding:16px}}
+@media(max-width:800px){.about-page .about-hero{grid-template-columns:1fr}.about-page .about-hero-copy{padding:40px 24px}.about-page .about-hero h1{font-size:clamp(42px,8vw,60px)}.about-page .about-hero-visual{min-height:0;aspect-ratio:16/10}.about-page .section-wrap{padding:40px 24px}.about-page .about-story,.about-page .about-material,.about-page .about-guidance{grid-template-columns:1fr;gap:24px}.about-page .about-material-photo{max-width:480px}.about-page .about-material-photo img{max-height:380px}.about-page .pet-performance-intro,.about-page .pet-documentation{gap:20px}.about-page .pet-graph{padding:16px}.about-page .pet-documentation>div{padding:20px}.about-page .retailer-section{padding-bottom:24px}.about-page .quote-callout{padding-top:24px;padding-bottom:24px}}
+@media(max-width:450px){.about-page .about-qualities{grid-template-columns:1fr}.about-page .about-hero-copy>p:not(.eyebrow){font-size:17px}.about-page .about-story-body .about-lead{font-size:19px}}

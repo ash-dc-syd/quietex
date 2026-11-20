@@ -24,14 +24,14 @@ export default async function About() {
   const { content } = await medusaFetch<{ content: SiteDocument }>("/store/site-content").catch(() => ({ content: defaultContent }))
   const defaults = defaultContent.sections.find(section => section.type === "about")!.settings
   const settings = { ...defaults, ...content.sections.find(section => section.type === "about")?.settings }
-  const image = legacyMediaUrl(settings.image || defaults.image)
+  const { header } = await medusaFetch<{ header: { image: string; alt: string; heading: string; accent: string; description: string } }>("/store/about-page").catch(() => ({ header: { image: "", alt: "", heading: "We help you find", accent: "the right panels.", description: "Acoustic wall panels for home theatres, living rooms and workspaces." } }))
+  const image = legacyMediaUrl(header.image || settings.image || defaults.image)
   return <div className="about-page">
     <SiteHeader announcement={content.announcement} />
     <main id="main">
       <section className="about-hero" aria-labelledby="about-title">
-        <Image unoptimized src={image} alt={settings.alt || "Quietex panels in a home theatre"} fill priority sizes="100vw" className="about-hero-image" />
-        <div className="about-hero-shade" />
-        <div className="about-hero-copy"><p className="eyebrow">About Quietex</p><h1 id="about-title">We help you find<br /><em>the right panels.</em></h1><p>Acoustic wall panels for home theatres,<br className="about-desktop-break" /> living rooms and workspaces.</p><Link className="underlined-link" href="/our-products/">Explore our panels <Arrow diagonal /></Link></div>
+        <div className="about-hero-copy"><p className="eyebrow">About Quietex</p><h1 id="about-title">{header.heading}<em>{header.accent}</em></h1><p>{header.description}</p><Link className="button button-dark" href="/our-products/">Explore our panels</Link></div>
+        <div className="about-hero-visual"><Image unoptimized src={image} alt={header.image ? header.alt : settings.alt || "Quietex panels in a home theatre"} fill priority sizes="(max-width: 800px) 100vw, 54vw" className="about-hero-image" /></div>
       </section>
       <section className="section-wrap about-story" aria-labelledby="about-story-title">
         <div><p className="eyebrow">About us</p><h2 id="about-story-title">{settings.heading}</h2></div>
@@ -42,7 +42,7 @@ export default async function About() {
         <div className="about-material-copy"><p className="eyebrow">What our panels are made from</p><h2 id="about-material-title">Made from<br /><em>PET felt.</em></h2><p className="about-material-intro">Our panels use PET felt to help absorb sound reflections. The range includes different surface patterns and finishes to suit your room.</p><div className="about-qualities">{qualities.map(quality => <div key={quality.title}><h3>{quality.title}</h3><p>{quality.body}</p></div>)}</div></div>
       </section>
       <PetPerformance />
-      <section className="section-wrap about-guidance" aria-labelledby="about-guidance-title"><p className="eyebrow">Not sure how it will look?</p><h2 id="about-guidance-title">Send us a photo.<br /><em>We’ll show you.</em></h2><div><p>Send us a photo of your wall and tell us which panels you like. We’ll put together a mockup and help estimate how many panels you’ll need.</p><Link className="text-link" href="/room-preview/">See it in your space <Arrow diagonal /></Link></div></section>
+      <section className="section-wrap about-guidance" aria-labelledby="about-guidance-title"><p className="eyebrow">Not sure how it will look?</p><h2 id="about-guidance-title">Send us a photo.<br /><em>We’ll show you.</em></h2><div><p>Send us a photo of your wall and tell us which panels you like. We’ll put together a mockup and help estimate how many panels you’ll need.</p><div className="about-planning-links"><Link className="button button-light" href="/room-preview/">See it in your space</Link><Link className="text-link" href="/panel-calculator/">Calculate your panels</Link></div></div></section>
       <Retailers />
       <QuoteCallout />
     </main>

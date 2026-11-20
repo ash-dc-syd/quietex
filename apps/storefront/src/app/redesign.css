@@ -286,3 +286,17 @@ body:has(.product-calculator-dialog[open]){overflow:hidden}
 @media(max-width:1000px){.about-page .about-hero-copy{padding-right:28px}.about-page .about-hero h1{font-size:48px}.about-page .about-material,.about-page .about-story{gap:32px}.about-page .about-qualities>div{padding:16px}}
 @media(max-width:800px){.about-page .about-hero{grid-template-columns:1fr}.about-page .about-hero-copy{padding:40px 24px}.about-page .about-hero h1{font-size:clamp(42px,8vw,60px)}.about-page .about-hero-visual{min-height:0;aspect-ratio:16/10}.about-page .section-wrap{padding:40px 24px}.about-page .about-story,.about-page .about-material,.about-page .about-guidance{grid-template-columns:1fr;gap:24px}.about-page .about-material-photo{max-width:480px}.about-page .about-material-photo img{max-height:380px}.about-page .pet-performance-intro,.about-page .pet-documentation{gap:20px}.about-page .pet-graph{padding:16px}.about-page .pet-documentation>div{padding:20px}.about-page .retailer-section{padding-bottom:24px}.about-page .quote-callout{padding-top:24px;padding-bottom:24px}}
 @media(max-width:450px){.about-page .about-qualities{grid-template-columns:1fr}.about-page .about-hero-copy>p:not(.eyebrow){font-size:17px}.about-page .about-story-body .about-lead{font-size:19px}}
+
+/* Four practical benefits with quiet, consistent line icons. */
+.about-page .about-benefits{padding-top:0}
+.about-benefits-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:28px}
+.about-benefits-heading h2{margin:0;max-width:580px}
+.about-benefits-heading>p{font-size:16px;line-height:1.7;max-width:340px;margin:0;color:var(--muted)}
+.about-benefits-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.about-benefits-grid article{padding:28px 24px;background:#fff;border:1px solid var(--line);border-radius:8px;min-width:0}
+.about-benefit-icon{display:grid;place-items:center;width:52px;height:52px;border-radius:12px;background:#eef0e8;color:#344536;margin-bottom:24px}
+.about-benefits-grid h3{font-size:20px;line-height:1.3;letter-spacing:-.015em;margin:0 0 12px}
+.about-benefits-grid article>p{font-size:15px;line-height:1.7;color:var(--muted);margin:0}
+@media(max-width:1000px){.about-benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:800px){.about-benefits-heading{display:block}.about-benefits-heading>p{margin-top:18px;max-width:560px}.about-benefits-grid article{padding:24px 20px}}
+@media(max-width:500px){.about-benefits-grid{grid-template-columns:1fr;gap:12px}.about-benefit-icon{margin-bottom:18px}.about-benefits-grid h3{font-size:20px}}

@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import { AboutBenefits } from "@/components/about-benefits"
 import { PetPerformance } from "@/components/pet-performance"
 import { Arrow } from "@/components/icons"
 import { SiteHeader } from "@/components/site-header"
@@ -37,6 +38,7 @@ export default async function About() {
         <div><p className="eyebrow">About us</p><h2 id="about-story-title">{settings.heading}</h2></div>
         <div className="about-story-body"><p className="about-lead">Quietex is an Australian acoustic panel brand. You can buy our panels through Digital Cinema, Audio Junction and Instyle HiFi.</p><p>{settings.body}</p>{settings.bodyTwo && <p>{settings.bodyTwo}</p>}<Link className="text-link" href="/contact-us/">Get in touch <Arrow diagonal /></Link></div>
       </section>
+      <AboutBenefits />
       <section className="section-wrap about-material" aria-labelledby="about-material-title">
         <figure className="about-material-photo"><Image unoptimized src={legacyMediaUrl(header.materialImage || "/wp-content/uploads/2026/02/adele-profile-image.webp")} alt={header.materialAlt || "Close view of the Adele acoustic panel’s felt texture and profile"} width={1024} height={1024} sizes="(max-width: 800px) 100vw, 45vw" />{header.materialCaption !== "" && <figcaption>{header.materialCaption ?? "Adele acoustic panel. See the product page for available finishes."}</figcaption>}</figure>
         <div className="about-material-copy"><p className="eyebrow">What our panels are made from</p><h2 id="about-material-title">Made from<br /><em>PET felt.</em></h2><p className="about-material-intro">Our panels use PET felt to help absorb sound reflections. The range includes different surface patterns and finishes to suit your room.</p><div className="about-qualities">{qualities.map(quality => <div key={quality.title}><h3>{quality.title}</h3><p>{quality.body}</p></div>)}</div></div>

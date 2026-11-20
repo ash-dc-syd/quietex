@@ -300,3 +300,8 @@ body:has(.product-calculator-dialog[open]){overflow:hidden}
 @media(max-width:1000px){.about-benefits-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.about-benefits-heading{display:block}.about-benefits-heading>p{margin-top:18px;max-width:560px}.about-benefits-grid article{padding:24px 20px}}
 @media(max-width:500px){.about-benefits-grid{grid-template-columns:1fr;gap:12px}.about-benefit-icon{margin-bottom:18px}.about-benefits-grid h3{font-size:20px}}
+
+/* Shared benefits sit directly below each product's room photos. */
+.product-page .about-benefits{padding-top:24px;padding-bottom:32px}
+.product-page .about-benefits h2{font-size:clamp(30px,3.6vw,44px);line-height:1.12}
+.product-page .about-benefits+.retailer-section{padding-top:24px}

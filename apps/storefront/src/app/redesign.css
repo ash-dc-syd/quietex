@@ -238,3 +238,8 @@ html{scroll-padding-top:108px}.enquiry-form .room-consent input{min-height:16px;
 .product-calculator-trigger:focus-visible,.product-calculator-close:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
 body:has(.product-calculator-dialog[open]){overflow:hidden}
 @media(max-width:600px){.product-calculator-content{padding:20px}.product-calculator-content>header h2{font-size:25px}.product-calculator-dialog .form-two{grid-template-columns:minmax(0,1fr);gap:0}}
+
+/* Keep the homepage retailer cards close to the following section. */
+.homepage .retailer-section{padding-bottom:24px}
+.homepage [data-content-section]:has(>.retailer-section)+[data-content-section]>.section-wrap{padding-top:32px}
+@media(max-width:650px){.homepage [data-content-section]:has(>.retailer-section)+[data-content-section]>.section-wrap{padding-top:24px}}

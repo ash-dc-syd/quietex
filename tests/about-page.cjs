@@ -18,3 +18,10 @@ test('public About endpoint returns only the header with no admin metadata',asyn
  const scope=mock();const res={setHeader(){},json(value){this.value=value}};await GET({scope},res)
  assert.deepEqual(Object.keys(res.value),['header']);assert.deepEqual(res.value.header,defaultAboutHeader)
 })
+
+test('material photo saves independently from the header and old settings retain defaults',async()=>{
+ const scope=mock();const header={...defaultAboutHeader,image:'https://example.com/hero.jpg',materialImage:'https://example.com/panel.jpg',materialAlt:'Panel detail',materialCaption:'Panel close-up'}
+ await writeAboutPage(scope,0,header);const saved=(await readAboutPage(scope)).state.header;assert.equal(saved.image,header.image);assert.equal(saved.materialImage,header.materialImage);assert.equal(saved.materialCaption,'Panel close-up')
+ assert.throws(()=>validateAboutHeader({...header,materialImage:'javascript:alert(1)'}));assert.throws(()=>validateAboutHeader({...header,materialAlt:''}))
+ const {materialImage,materialAlt,materialCaption,...old}=defaultAboutHeader;assert.equal(validateAboutHeader(old).materialImage,defaultAboutHeader.materialImage)
+})
